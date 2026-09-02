@@ -1135,4 +1135,21 @@ body.planclima-site :focus-visible {
     content: " (" attr(href) ")";
     font-size: 0.8em;
   }
+
+  .official-web .in-page-nav > ol {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .official-web .in-page-nav ol ol {
+    margin-left: .25rem;
+    padding-left: 1rem;
+    border-left: 1px solid #d9dfdc;
+    list-style: none;
+  }
+
+  .official-web .placeholder-topics {
+    padding-left: 0;
+    list-style: none;
+  }
 }
