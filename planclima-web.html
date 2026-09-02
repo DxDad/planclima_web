@@ -1,492 +1,660 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Protótipo da versão web do Plano de Ação Climática do Município de São Paulo — Revisão 2025.">
+  <meta name="description"
+    content="Protótipo da versão web do Plano de Ação Climática do Município de São Paulo — Revisão 2025.">
   <title>PlanClima SP — Versão Web — Protótipo</title>
   <script>document.documentElement.classList.add('js');</script>
   <link rel="stylesheet" href="assets/css/styles.css">
   <!-- Estilos exclusivos desta página. O arquivo CSS compartilhado permanece inalterado. -->
   <style>
     .official-web {
-      --web-green:#004f27;
-      --web-green-light:#176a4d;
-      --web-lime:#94c11f;
-      --web-yellow:#b98500;
-      --web-orange:#c75b15;
-      --web-coral:#ef775a;
-      --web-teal:#337d70;
-      --web-red:#c11e38;
-      background:#f4f4f4;
+      --web-green: #004f27;
+      --web-green-light: #176a4d;
+      --web-lime: #94c11f;
+      --web-yellow: #b98500;
+      --web-orange: #c75b15;
+      --web-coral: #ef775a;
+      --web-teal: #337d70;
+      --web-red: #c11e38;
+      background: #f4f4f4;
     }
 
     .official-web .container {
-      width:min(calc(100% - 2rem),75rem);
+      width: min(calc(100% - 2rem), 75rem);
     }
 
     .portal-context {
-      min-height:3.5rem;
-      display:flex;
-      align-items:center;
-      color:#fff;
-      background:#30313f;
+      min-height: 3.5rem;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background: #30313f;
     }
 
     .portal-context a {
-      display:inline-flex;
-      align-items:center;
-      gap:.75rem;
-      color:#fff!important;
-      font-weight:700;
-      text-decoration:none;
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      color: #fff !important;
+      font-weight: 700;
+      text-decoration: none;
     }
 
     .portal-context a::before {
-      content:"";
-      width:.75rem;
-      height:.9rem;
-      border:.1rem solid currentColor;
-      box-shadow:-.22rem -.18rem 0 -.08rem #30313f,-.22rem -.18rem 0 0 currentColor;
+      content: "";
+      width: .75rem;
+      height: .9rem;
+      border: .1rem solid currentColor;
+      box-shadow: -.22rem -.18rem 0 -.08rem #30313f, -.22rem -.18rem 0 0 currentColor;
     }
 
     .clone-header {
-      box-shadow:0 .2rem .75rem rgba(0,0,0,.08);
+      box-shadow: 0 .2rem .75rem rgba(0, 0, 0, .08);
     }
 
     .clone-header .site-header__inner {
-      min-height:5.65rem;
+      min-height: 5.65rem;
     }
 
     .clone-header .brand-link img {
-      width:11rem;
+      width: 11rem;
     }
 
     .clone-header .desktop-nav {
-      gap:.75rem;
+      gap: .75rem;
     }
 
     .clone-header .desktop-nav>a,
     .clone-header .platforms-menu>summary {
-      color:var(--web-green);
-      font-size:1rem;
+      color: var(--web-green);
+      font-size: 1rem;
     }
 
     .clone-header .desktop-nav>a.nav-plan {
-      padding-inline:1.35rem;
-      color:#fff;
-      background:var(--web-green-light);
+      padding-inline: 1.35rem;
+      color: #fff;
+      background: var(--web-green-light);
     }
 
     .clone-header .platforms-menu>summary {
-      padding-inline:1.55rem;
-      color:#fff;
-      background:var(--web-green-light);
-      border:0;
+      padding-inline: 1.55rem;
+      color: #fff;
+      background: var(--web-green-light);
+      border: 0;
     }
 
     .official-web .breadcrumbs {
-      background:#fff;
-      border-bottom:.0625rem solid #e1e4e2;
+      background: #fff;
+      border-bottom: .0625rem solid #e1e4e2;
     }
 
     .official-web .web-hero {
-      padding:clamp(4rem,7vw,6.5rem) 0 4rem;
-      color:#fff;
-      background:var(--web-green);
-      border:0;
+      padding: clamp(4rem, 7vw, 6.5rem) 0 4rem;
+      color: #fff;
+      background: var(--web-green);
+      border: 0;
     }
 
     .official-web .web-hero h1 {
-      color:#fff;
-      font-size:clamp(2.8rem,5vw,4.4rem);
-      line-height:1;
+      color: #fff;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      line-height: 1;
     }
 
     .official-web .web-hero__lead {
-      max-width:56rem;
-      color:#fff;
-      font-size:1.18rem;
+      max-width: 56rem;
+      color: #fff;
+      font-size: 1.18rem;
     }
 
     .official-web .status-tag {
-      margin-bottom:1rem;
-      padding:.3rem .75rem;
-      color:#172000;
-      background:#dce94f;
-      border-radius:2rem;
-      text-transform:uppercase;
+      margin-bottom: 1rem;
+      padding: .3rem .75rem;
+      color: #172000;
+      background: #dce94f;
+      border-radius: 2rem;
+      text-transform: uppercase;
     }
 
     .official-web .button-link {
-      color:#172000!important;
-      background:#dce94f;
-      border:.125rem solid #dce94f;
-      border-radius:2rem;
+      color: #172000 !important;
+      background: #dce94f;
+      border: .125rem solid #dce94f;
+      border-radius: 2rem;
     }
 
     .official-web .button-link--secondary {
-      color:#fff!important;
-      background:transparent;
-      border-color:#fff;
+      color: #fff !important;
+      background: transparent;
+      border-color: #fff;
     }
 
     .official-web .web-layout {
-      grid-template-columns:minmax(15rem,18rem) minmax(0,1fr);
-      gap:2rem;
-      padding-top:3rem;
+      grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+      gap: 2rem;
+      padding-top: 3rem;
     }
 
     .official-web .in-page-nav {
-      top:1rem;
-      padding:1.5rem;
-      background:#fff;
-      border:.0625rem solid #d9dfdc;
-      border-top:.4rem solid var(--web-green-light);
-      border-radius:1rem;
-      box-shadow:0 .35rem 1rem rgba(0,0,0,.06);
+      top: 1rem;
+      padding: 1.5rem;
+      background: #fff;
+      border: .0625rem solid #d9dfdc;
+      border-top: .4rem solid var(--web-green-light);
+      border-radius: 1rem;
+      box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .06);
     }
 
     .official-web .in-page-nav h2 {
-      margin-bottom:.8rem;
-      color:var(--web-green);
-      font-size:1.15rem;
+      margin-bottom: .8rem;
+      color: var(--web-green);
+      font-size: 1.15rem;
     }
 
     .official-web .in-page-nav li+li {
-      margin-top:.45rem;
+      margin-top: .45rem;
     }
 
     .official-web .in-page-nav a {
-      color:var(--web-green);
+      color: var(--web-green);
     }
 
     .official-web .in-page-nav>ol {
-      max-height:65vh;
-      margin:0;
-      padding-right:.5rem;
-      overflow:auto;
+      max-height: 65vh;
+      margin: 0;
+      padding-right: .5rem;
+      overflow: auto;
     }
 
     .official-web .in-page-nav ol ol {
-      margin:.45rem 0 .7rem;
-      padding-left:1.25rem;
-      font-size:.92rem;
+      margin: .45rem 0 .7rem;
+      padding-left: 1.25rem;
+      font-size: .92rem;
     }
 
     .official-web .in-page-nav a[aria-current="location"] {
-      display:inline-block;
-      padding:.2rem .45rem;
-      color:#fff;
-      background:var(--web-green);
-      border-radius:.3rem;
-      font-weight:800;
-      text-decoration:none;
+      display: inline-block;
+      padding: .2rem .45rem;
+      color: #fff;
+      background: var(--web-green);
+      border-radius: .3rem;
+      font-weight: 800;
+      text-decoration: none;
     }
 
     .official-web .document-notice {
-      margin-bottom:2rem;
-      padding:1.2rem 1.4rem;
-      color:#fff;
-      background:var(--web-teal);
-      border:0;
-      border-radius:.85rem;
+      margin-bottom: 2rem;
+      padding: 1.2rem 1.4rem;
+      color: #fff;
+      background: var(--web-teal);
+      border: 0;
+      border-radius: .85rem;
     }
 
     .official-web .document-section {
-      margin:0;
-      padding:clamp(1.5rem,4vw,2.7rem);
-      background:#fff;
-      border:0;
-      border-top:.4rem solid var(--web-green-light);
-      border-radius:1rem;
-      box-shadow:0 .45rem 1.2rem rgba(0,0,0,.06);
+      margin: 0;
+      padding: clamp(1.5rem, 4vw, 2.7rem);
+      background: #fff;
+      border: 0;
+      border-top: .4rem solid var(--web-green-light);
+      border-radius: 1rem;
+      box-shadow: 0 .45rem 1.2rem rgba(0, 0, 0, .06);
     }
 
     .official-web .document-section+.document-section {
-      margin-top:2rem;
-      padding-top:clamp(1.5rem,4vw,2.7rem);
+      margin-top: 2rem;
+      padding-top: clamp(1.5rem, 4vw, 2.7rem);
     }
 
     .js .official-web .document-view[hidden] {
-      display:none;
+      display: none;
     }
 
     .official-web .document-view:focus {
-      outline:0;
+      outline: 0;
     }
 
     .official-web .navigation-status {
-      position:absolute;
-      width:1px;
-      height:1px;
-      padding:0;
-      margin:-1px;
-      overflow:hidden;
-      clip:rect(0,0,0,0);
-      white-space:nowrap;
-      border:0;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .official-web .placeholder-view {
-      min-height:24rem;
+      min-height: 24rem;
     }
 
     .official-web .placeholder-message {
-      margin:2rem 0;
-      padding:1.25rem 1.4rem;
-      background:#eef3f0;
-      border-left:.35rem solid var(--web-green-light);
-      border-radius:.5rem;
+      margin: 2rem 0;
+      padding: 1.25rem 1.4rem;
+      background: #eef3f0;
+      border-left: .35rem solid var(--web-green-light);
+      border-radius: .5rem;
     }
 
     .official-web .placeholder-topics {
-      columns:2 18rem;
+      columns: 2 18rem;
     }
 
     .official-web .placeholder-topics li {
-      break-inside:avoid;
-      margin-bottom:.7rem;
+      break-inside: avoid;
+      margin-bottom: .7rem;
     }
 
     .official-web .chapter-index--complete {
-      display:block;
-      padding:0;
-      list-style:none;
-      counter-reset:none;
+      display: block;
+      padding: 0;
+      list-style: none;
+      counter-reset: none;
     }
 
     .official-web .chapter-index--complete>li {
-      min-height:0;
-      margin-bottom:1rem;
-      padding:1rem 1.1rem;
+      min-height: 0;
+      margin-bottom: 1rem;
+      padding: 1rem 1.1rem;
     }
 
     .official-web .chapter-index--complete li::before {
-      content:none;
+      content: none;
     }
 
     .official-web .chapter-index--complete ol {
-      margin:.75rem 0 0;
-      padding-left:1.45rem;
+      margin: .75rem 0 0;
+      padding-left: 1.45rem;
     }
 
     .official-web .chapter-index--complete ol li {
-      margin:.35rem 0;
-      padding:0;
-      min-height:0;
-      border:0;
-      box-shadow:none;
+      margin: .35rem 0;
+      padding: 0;
+      min-height: 0;
+      border: 0;
+      box-shadow: none;
     }
 
     .official-web .index-page {
-      float:right;
-      margin-left:1rem;
-      color:#565f5b;
-      font-variant-numeric:tabular-nums;
+      float: right;
+      margin-left: 1rem;
+      color: #565f5b;
+      font-variant-numeric: tabular-nums;
     }
 
     .official-web .theme-word {
-      display:inline-block;
-      margin-bottom:.75rem;
-      color:var(--web-green-light);
-      font-weight:900;
-      letter-spacing:.12em;
-      text-transform:uppercase;
+      display: inline-block;
+      margin-bottom: .75rem;
+      color: var(--web-green-light);
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
     .official-web .document-section>h2 {
-      margin-top:.35rem;
-      padding:0;
-      color:var(--web-green);
-      border:0;
-      font-size:clamp(2rem,3.6vw,3rem);
-      line-height:1.08;
+      margin-top: .35rem;
+      padding: 0;
+      color: var(--web-green);
+      border: 0;
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      line-height: 1.08;
     }
 
     .official-web .document-section h3 {
-      color:var(--web-green);
+      color: var(--web-green);
     }
 
     .official-web .eyebrow {
-      color:var(--web-green-light);
-      font-weight:900;
-      letter-spacing:.08em;
+      color: var(--web-green-light);
+      font-weight: 900;
+      letter-spacing: .08em;
     }
 
     .official-web .chapter-index {
-      gap:1rem;
+      gap: 1rem;
     }
 
     .official-web .chapter-index li {
-      min-height:6.2rem;
-      border:0;
-      border-top:.32rem solid var(--chapter-color,var(--web-green-light));
-      border-radius:.65rem;
-      box-shadow:0 .15rem .65rem rgba(0,0,0,.08);
+      min-height: 6.2rem;
+      border: 0;
+      border-top: .32rem solid var(--chapter-color, var(--web-green-light));
+      border-radius: .65rem;
+      box-shadow: 0 .15rem .65rem rgba(0, 0, 0, .08);
     }
 
-    .official-web .chapter-index li:nth-child(5n+1) { --chapter-color:var(--web-yellow); }
-    .official-web .chapter-index li:nth-child(5n+2) { --chapter-color:var(--web-orange); }
-    .official-web .chapter-index li:nth-child(5n+3) { --chapter-color:var(--web-coral); }
-    .official-web .chapter-index li:nth-child(5n+4) { --chapter-color:var(--web-teal); }
-    .official-web .chapter-index li:nth-child(5n+5) { --chapter-color:var(--web-red); }
+    .official-web .chapter-index li:nth-child(5n+1) {
+      --chapter-color: var(--web-yellow);
+    }
+
+    .official-web .chapter-index li:nth-child(5n+2) {
+      --chapter-color: var(--web-orange);
+    }
+
+    .official-web .chapter-index li:nth-child(5n+3) {
+      --chapter-color: var(--web-coral);
+    }
+
+    .official-web .chapter-index li:nth-child(5n+4) {
+      --chapter-color: var(--web-teal);
+    }
+
+    .official-web .chapter-index li:nth-child(5n+5) {
+      --chapter-color: var(--web-red);
+    }
 
     .official-web .chapter-index li::before {
-      color:var(--chapter-color);
-      font-size:.9rem;
+      color: var(--chapter-color);
+      font-size: .9rem;
     }
 
     .official-web .chapter-figure img {
-      max-height:30rem;
-      object-fit:cover;
-      border-radius:1rem 1rem 0 0;
+      max-height: 30rem;
+      object-fit: cover;
+      border-radius: 1rem 1rem 0 0;
     }
 
     .official-web .history-timeline li {
-      border:0;
-      border-top:.32rem solid var(--timeline-color,var(--web-green-light));
-      border-radius:.65rem;
-      box-shadow:0 .15rem .65rem rgba(0,0,0,.08);
+      border: 0;
+      border-top: .32rem solid var(--timeline-color, var(--web-green-light));
+      border-radius: .65rem;
+      box-shadow: 0 .15rem .65rem rgba(0, 0, 0, .08);
     }
 
-    .official-web .history-timeline li:nth-child(5n+1) { --timeline-color:var(--web-yellow); }
-    .official-web .history-timeline li:nth-child(5n+2) { --timeline-color:var(--web-orange); }
-    .official-web .history-timeline li:nth-child(5n+3) { --timeline-color:var(--web-coral); }
-    .official-web .history-timeline li:nth-child(5n+4) { --timeline-color:var(--web-teal); }
-    .official-web .history-timeline li:nth-child(5n+5) { --timeline-color:var(--web-red); }
-    .official-web .history-timeline time { color:var(--timeline-color); }
+    .official-web .history-timeline li:nth-child(5n+1) {
+      --timeline-color: var(--web-yellow);
+    }
+
+    .official-web .history-timeline li:nth-child(5n+2) {
+      --timeline-color: var(--web-orange);
+    }
+
+    .official-web .history-timeline li:nth-child(5n+3) {
+      --timeline-color: var(--web-coral);
+    }
+
+    .official-web .history-timeline li:nth-child(5n+4) {
+      --timeline-color: var(--web-teal);
+    }
+
+    .official-web .history-timeline li:nth-child(5n+5) {
+      --timeline-color: var(--web-red);
+    }
+
+    .official-web .history-timeline time {
+      color: var(--timeline-color);
+    }
 
     .official-web .vision-quote {
-      padding:2rem;
-      color:#fff;
-      background:var(--web-green);
-      border-left:.5rem solid var(--web-lime);
-      border-radius:.8rem;
+      padding: 2rem;
+      color: #fff;
+      background: var(--web-green);
+      border-left: .5rem solid var(--web-lime);
+      border-radius: .8rem;
     }
 
     .official-web .objectives-list {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1rem;
-      margin:1.25rem 0;
-      padding:0;
-      list-style:none;
-      counter-reset:objective;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: objective;
     }
 
     .official-web .objectives-list[start="2"] {
-      counter-reset:objective 1;
+      counter-reset: objective 1;
     }
 
     .official-web .objectives-list li {
-      counter-increment:objective;
-      margin:0;
-      padding:1.35rem;
-      background:#f4f7f5;
-      border-left:.32rem solid var(--web-teal);
-      border-radius:.65rem;
+      counter-increment: objective;
+      margin: 0;
+      padding: 1.35rem;
+      background: #f4f7f5;
+      border-left: .32rem solid var(--web-teal);
+      border-radius: .65rem;
     }
 
     .official-web .objectives-list li::before {
-      content:counter(objective,decimal-leading-zero);
-      display:block;
-      margin-bottom:.35rem;
-      color:var(--web-teal);
-      font-weight:900;
+      content: counter(objective, decimal-leading-zero);
+      display: block;
+      margin-bottom: .35rem;
+      color: var(--web-teal);
+      font-weight: 900;
     }
 
     .official-web .document-subsection {
-      margin-top:3rem;
-      padding-top:2.3rem;
-      border-top:.12rem solid #dce2df;
+      margin-top: 3rem;
+      padding-top: 2.3rem;
+      border-top: .12rem solid #dce2df;
     }
 
     .official-web .data-region {
-      border:0;
-      border-radius:.8rem;
-      box-shadow:0 .15rem .65rem rgba(0,0,0,.08);
+      border: 0;
+      border-radius: .8rem;
+      box-shadow: 0 .15rem .65rem rgba(0, 0, 0, .08);
     }
 
     .official-web .data-table caption {
-      color:var(--web-green);
-      background:#eef3f0;
+      color: var(--web-green);
+      background: #eef3f0;
     }
 
     .official-web .data-table thead th {
-      background:var(--web-green-light);
+      background: var(--web-green-light);
     }
 
     .official-web .meta-card {
-      border:0;
-      border-radius:1rem;
-      box-shadow:0 .35rem 1rem rgba(0,0,0,.09);
+      border: 0;
+      border-radius: 1rem;
+      box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .09);
     }
 
     .official-web .meta-card__header {
-      padding:2rem;
-      background:var(--web-orange);
+      padding: 2rem;
+      background: var(--web-orange);
     }
 
     .official-web .meta-card__facts div {
-      background:#f4f7f5;
-      border-left:.25rem solid var(--web-yellow);
-      border-radius:.55rem;
+      background: #f4f7f5;
+      border-left: .25rem solid var(--web-yellow);
+      border-radius: .55rem;
     }
 
     .official-web .page-navigation a {
-      padding:.75rem 1rem;
-      color:#fff;
-      background:var(--web-green-light);
-      border-radius:2rem;
+      padding: .75rem 1rem;
+      color: #fff;
+      background: var(--web-green-light);
+      border-radius: 2rem;
     }
 
     .clone-footer {
-      padding:4rem 0 2rem;
-      color:#59606a;
-      background:#fff;
+      padding: 4rem 0 2rem;
+      color: #59606a;
+      background: #fff;
     }
 
     .clone-footer__grid {
-      display:grid;
-      grid-template-columns:1.15fr 1fr 1fr;
-      gap:4rem;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1fr;
+      gap: 4rem;
     }
 
-    .clone-footer h2,.clone-footer h3 { color:var(--web-green); }
-    .clone-footer h3 { margin:0 0 1.4rem; font-size:.95rem; text-transform:uppercase; }
-    .clone-footer__brand img { width:13rem; margin-bottom:1rem; }
-    .clone-footer a { color:#59606a!important; }
-    .clone-footer__prototype { margin-top:3rem; padding-top:1.7rem; border-top:.0625rem solid #d9dddf; }
-    .clone-footer__prototype h2 { margin:0 0 .75rem; font-size:1.2rem; }
-    .clone-footer__prototype p,.clone-footer__prototype address { max-width:67rem; margin:0 0 .75rem; font-style:normal; line-height:1.55; }
-    .clone-footer__copyright { margin-top:2.4rem; padding-top:1.7rem; border-top:.0625rem solid #e1e4e5; color:#a1a8b1; text-align:center; font-size:.8rem; }
+    .clone-footer h2,
+    .clone-footer h3 {
+      color: var(--web-green);
+    }
+
+    .clone-footer h3 {
+      margin: 0 0 1.4rem;
+      font-size: .95rem;
+      text-transform: uppercase;
+    }
+
+    .clone-footer__brand img {
+      width: 13rem;
+      margin-bottom: 1rem;
+    }
+
+    .clone-footer a {
+      color: #59606a !important;
+    }
+
+    .clone-footer__prototype {
+      margin-top: 3rem;
+      padding-top: 1.7rem;
+      border-top: .0625rem solid #d9dddf;
+    }
+
+    .clone-footer__prototype h2 {
+      margin: 0 0 .75rem;
+      font-size: 1.2rem;
+    }
+
+    .clone-footer__prototype p,
+    .clone-footer__prototype address {
+      max-width: 67rem;
+      margin: 0 0 .75rem;
+      font-style: normal;
+      line-height: 1.55;
+    }
+
+    .clone-footer__copyright {
+      margin-top: 2.4rem;
+      padding-top: 1.7rem;
+      border-top: .0625rem solid #e1e4e5;
+      color: #a1a8b1;
+      text-align: center;
+      font-size: .8rem;
+    }
 
     @media (max-width:68rem) {
-      .clone-header .mobile-nav>summary { border-radius:2rem; }
+      .clone-header .mobile-nav>summary {
+        border-radius: 2rem;
+      }
     }
 
     @media (max-width:56rem) {
-      .official-web .web-layout { grid-template-columns:1fr; }
-      .official-web .in-page-nav { position:static; }
-      .official-web .objectives-list { grid-template-columns:1fr; }
-      .clone-footer__grid { grid-template-columns:1fr 1fr; gap:2rem; }
+      .official-web .web-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .official-web .in-page-nav {
+        position: static;
+      }
+
+      .official-web .objectives-list {
+        grid-template-columns: 1fr;
+      }
+
+      .clone-footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
     }
 
     @media (max-width:44rem) {
-      .portal-context { min-height:3rem; }
-      .official-web .document-section { padding:1.35rem; }
-      .official-web .chapter-index { grid-template-columns:1fr; }
-      .clone-footer__grid { grid-template-columns:1fr; }
+      .portal-context {
+        min-height: 3rem;
+      }
+
+      .official-web .document-section {
+        padding: 1.35rem;
+      }
+
+      .official-web .chapter-index {
+        grid-template-columns: 1fr;
+      }
+
+      .clone-footer__grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media print {
-      .js .official-web .document-view[hidden] { display:block!important; }
-      .official-web .in-page-nav { position:static; max-width:none; }
-      .official-web .in-page-nav>ol { max-height:none; overflow:visible; }
+      .js .official-web .document-view[hidden] {
+        display: block !important;
+      }
+
+      .official-web .in-page-nav {
+        position: static;
+        max-width: none;
+      }
+
+      .official-web .in-page-nav>ol {
+        max-height: none;
+        overflow: visible;
+      }
+    }
+
+    .official-web .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .official-web .team-group {
+      padding: 1.25rem;
+      background: #f4f7f5;
+      border-left: .3rem solid var(--web-green-light);
+      border-radius: .65rem;
+      break-inside: avoid;
+    }
+
+    .official-web .team-group h3,
+    .official-web .team-group h4 {
+      margin-top: 0;
+      color: var(--web-green);
+    }
+
+    .official-web .team-group h4 {
+      margin-bottom: .5rem;
+      font-size: 1rem;
+    }
+
+    .official-web .team-group ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .official-web .team-group li+li {
+      margin-top: .25rem;
+    }
+
+    .official-web .references-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .official-web .references-list li {
+      padding: 1.15rem;
+      overflow-wrap: anywhere;
+      background: #f4f7f5;
+      border-left: .3rem solid var(--web-teal);
+      border-radius: .65rem;
+    }
+
+    @media (max-width:44rem) {
+
+      .official-web .team-grid,
+      .official-web .references-list {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body class="planclima-site official-web">
   <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 
@@ -510,7 +678,8 @@
           <summary>Outras Plataformas</summary>
           <div class="platforms-menu__panel">
             <a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/">SampaClima</a>
-            <a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento Climático</a>
+            <a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento
+              Climático</a>
             <a href="https://www.cgesp.org/v3/">CGE</a>
             <a href="https://observasampa.prefeitura.sp.gov.br/">ObservaSampa</a>
           </div>
@@ -525,7 +694,8 @@
           <a href="index.html#estrategias">Estratégias</a>
           <a href="planclima-web.html" aria-current="page">Plano na Web</a>
           <a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/">SampaClima</a>
-          <a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento Climático</a>
+          <a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento
+            Climático</a>
         </nav>
       </details>
     </div>
@@ -543,10 +713,13 @@
       <div class="container">
         <span class="status-tag">Versão demonstrativa</span>
         <h1>PlanClima SP — versão web</h1>
-        <p class="web-hero__lead">Plano de Ação Climática do Município de São Paulo (2020–2050), Revisão 2025. Conteúdo reorganizado para leitura, consulta e navegação em ambiente digital.</p>
+        <p class="web-hero__lead">Plano de Ação Climática do Município de São Paulo (2020–2050), Revisão 2025. Conteúdo
+          reorganizado para leitura, consulta e navegação em ambiente digital.</p>
         <div class="web-hero__actions">
           <a class="button-link" href="#sumario">Consultar o sumário</a>
-          <a class="button-link button-link--secondary" href="https://prefeitura.sp.gov.br/cidade/secretarias/upload/seclima/planclimasp/arquivos/PlanClimaSP-2025__Completo__PARA-TELA.pdf">Baixar o PDF original</a>
+          <a class="button-link button-link--secondary"
+            href="https://prefeitura.sp.gov.br/cidade/secretarias/upload/seclima/planclimasp/arquivos/PlanClimaSP-2025__Completo__PARA-TELA.pdf">Baixar
+            o PDF original</a>
         </div>
       </div>
     </header>
@@ -559,30 +732,67 @@
           <li><a href="#palavra-prefeito">Palavra do Prefeito</a></li>
           <li><a href="#palavra-secretario">Palavra do Secretário Executivo de Mudanças Climáticas</a></li>
           <li><a href="#capitulo-1">1 Apresentação</a>
-            <ol><li><a href="#contextualizacao">1.1 Contextualização, marco legal e institucional</a></li><li><a href="#historico">Histórico do PlanClima SP</a></li></ol>
+            <ol>
+              <li><a href="#contextualizacao">1.1 Contextualização, marco legal e institucional</a></li>
+              <li><a href="#historico">Histórico do PlanClima SP</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-2">2 Visão, objetivos e metas</a>
-            <ol><li><a href="#metas-gerais">Metas gerais</a></li></ol>
+            <ol>
+              <li><a href="#metas-gerais">Metas gerais</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-3">3 Contexto da cidade de São Paulo</a>
-            <ol><li><a href="#capitulo-3-1">3.1 Papel das cidades na mudança do clima</a></li><li><a href="#capitulo-3-2">3.2 Características demográficas, econômicas e socioambientais</a></li><li><a href="#capitulo-3-3">3.3 Dados de precipitação</a></li><li><a href="#capitulo-3-4">3.4 Dados de temperatura</a></li><li><a href="#capitulo-3-5">3.5 Outros registros de extremos climáticos</a></li></ol>
+            <ol>
+              <li><a href="#capitulo-3-1">3.1 Papel das cidades na mudança do clima</a></li>
+              <li><a href="#capitulo-3-2">3.2 Características demográficas, econômicas e socioambientais</a></li>
+              <li><a href="#capitulo-3-3">3.3 Dados de precipitação</a></li>
+              <li><a href="#capitulo-3-4">3.4 Dados de temperatura</a></li>
+              <li><a href="#capitulo-3-5">3.5 Outros registros de extremos climáticos</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-4">4 Síntese atualizada do inventário de gases de efeito estufa</a>
-            <ol><li><a href="#capitulo-4-1">4.1 Distribuição setorial das emissões</a></li><li><a href="#capitulo-4-2">4.2 Metas de redução de emissões</a></li><li><a href="#capitulo-4-3">4.3 Emissões projetadas e observadas</a></li><li><a href="#capitulo-4-4">4.4 Considerações complementares</a></li></ol>
+            <ol>
+              <li><a href="#capitulo-4-1">4.1 Distribuição setorial das emissões</a></li>
+              <li><a href="#capitulo-4-2">4.2 Metas de redução de emissões</a></li>
+              <li><a href="#capitulo-4-3">4.3 Emissões projetadas e observadas</a></li>
+              <li><a href="#capitulo-4-4">4.4 Considerações complementares</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-5">5 Avaliação dos riscos climáticos da cidade</a></li>
           <li><a href="#capitulo-6">6 Justiça climática</a></li>
           <li><a href="#capitulo-7">7 Balanço 2021-2024</a>
-            <ol><li><a href="#capitulo-7-1">7.1 Geral</a></li><li><a href="#capitulo-7-2">7.2 Balanço do 4º relatório de acompanhamento por estratégia</a></li></ol>
+            <ol>
+              <li><a href="#capitulo-7-1">7.1 Geral</a></li>
+              <li><a href="#capitulo-7-2">7.2 Balanço do 4º relatório de acompanhamento por estratégia</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-8">8 Metodologia e processos de atualização</a>
-            <ol><li><a href="#capitulo-8-1">8.1 Abordagem geral de revisão e nova estrutura</a></li><li><a href="#capitulo-8-2">8.2 Construção da revisão</a></li><li><a href="#capitulo-8-3">8.3 Contribuições recebidas e como foram incorporadas</a></li></ol>
+            <ol>
+              <li><a href="#capitulo-8-1">8.1 Abordagem geral de revisão e nova estrutura</a></li>
+              <li><a href="#capitulo-8-2">8.2 Construção da revisão</a></li>
+              <li><a href="#capitulo-8-3">8.3 Contribuições recebidas e como foram incorporadas</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-9">9 Plano de ação – nosso caminho até 2050</a>
-            <ol><li><a href="#capitulo-9-1">9.1 Rumo Ao Carbono Zero</a></li><li><a href="#capitulo-9-2">9.2 Adaptar a cidade de hoje para o amanhã</a></li><li><a href="#capitulo-9-3">9.3 Proteger Pessoas e Bens</a></li><li><a href="#capitulo-9-4">9.4 Cuidar dos Biomas, fortalecer a cidade</a></li><li><a href="#capitulo-9-5">9.5 Gerar trabalho e riqueza sustentáveis</a></li><li><a href="#amostra-meta">Exemplo de ficha de meta</a></li></ol>
+            <ol>
+              <li><a href="#capitulo-9-1">9.1 Rumo Ao Carbono Zero</a></li>
+              <li><a href="#capitulo-9-2">9.2 Adaptar a cidade de hoje para o amanhã</a></li>
+              <li><a href="#capitulo-9-3">9.3 Proteger Pessoas e Bens</a></li>
+              <li><a href="#capitulo-9-4">9.4 Cuidar dos Biomas, fortalecer a cidade</a></li>
+              <li><a href="#capitulo-9-5">9.5 Gerar trabalho e riqueza sustentáveis</a></li>
+              <li><a href="#amostra-meta">Exemplo de ficha de meta</a></li>
+            </ol>
           </li>
           <li><a href="#capitulo-10">10 Governança para a ação climática</a>
-            <ol><li><a href="#capitulo-10-1">10.1 Instâncias de governança para ação climática</a></li><li><a href="#capitulo-10-2">10.2 Orçamento Climático</a></li><li><a href="#capitulo-10-3">10.3 Atores externos</a></li><li><a href="#capitulo-10-4">10.4 Sistema de Monitoramento e Reporte</a></li><li><a href="#capitulo-10-5">10.5 Plataformas de visualização e reporte de dados do Município de São Paulo</a></li></ol>
+            <ol>
+              <li><a href="#capitulo-10-1">10.1 Instâncias de governança para ação climática</a></li>
+              <li><a href="#capitulo-10-2">10.2 Orçamento Climático</a></li>
+              <li><a href="#capitulo-10-3">10.3 Atores externos</a></li>
+              <li><a href="#capitulo-10-4">10.4 Sistema de Monitoramento e Reporte</a></li>
+              <li><a href="#capitulo-10-5">10.5 Plataformas de visualização e reporte de dados do Município de São
+                  Paulo</a></li>
+            </ol>
           </li>
           <li><a href="#equipe-tecnica">Equipe técnica</a></li>
           <li><a href="#referencias">Referências</a></li>
@@ -591,103 +801,1343 @@
 
       <div class="document-content">
         <aside class="document-notice" aria-label="Informação sobre o protótipo">
-          <p><strong>Escopo desta página:</strong> esta demonstração apresenta integralmente os capítulos 1 e 2, além de uma ficha do Capítulo 9. Na versão completa, os demais capítulos, figuras, tabelas, metas e ações podem seguir os mesmos padrões.</p>
+          <p><strong>Escopo desta página:</strong> esta demonstração apresenta integralmente os capítulos 1 e 2, além de
+            uma ficha do Capítulo 9. Na versão completa, os demais capítulos, figuras, tabelas, metas e ações podem
+            seguir os mesmos padrões.</p>
         </aside>
         <p class="navigation-status" id="navigation-status" role="status" aria-live="polite"></p>
 
-        <section class="document-section document-view" id="sumario" data-view="sumario" aria-labelledby="titulo-sumario" tabindex="-1">
+        <section class="document-section document-view" id="sumario" data-view="sumario"
+          aria-labelledby="titulo-sumario" tabindex="-1">
           <span class="eyebrow">Navegação pelo documento</span>
           <h2 id="titulo-sumario">Sumário do Plano</h2>
-          <p>Selecione uma parte do Plano. Os capítulos 1 e 2 estão integralmente disponíveis nesta demonstração; os demais itens abrem páginas provisórias que representam a estrutura prevista.</p>
+          <p>Selecione uma parte do Plano. Os capítulos 1 e 2 estão integralmente disponíveis nesta demonstração; os
+            demais itens abrem páginas provisórias que representam a estrutura prevista.</p>
           <ol class="chapter-index chapter-index--complete">
             <li><a href="#palavra-prefeito">Palavra do Prefeito</a><span class="index-page">12</span></li>
-            <li><a href="#palavra-secretario">Palavra do Secretário Executivo de Mudanças Climáticas</a><span class="index-page">14</span></li>
-            <li><a href="#capitulo-1">1 Apresentação</a><span class="index-page">16</span><ol><li><a href="#contextualizacao">1.1 Contextualização, marco legal e institucional</a><span class="index-page">19</span></li></ol></li>
+            <li><a href="#palavra-secretario">Palavra do Secretário Executivo de Mudanças Climáticas</a><span
+                class="index-page">14</span></li>
+            <li><a href="#capitulo-1">1 Apresentação</a><span class="index-page">16</span>
+              <ol>
+                <li><a href="#contextualizacao">1.1 Contextualização, marco legal e institucional</a><span
+                    class="index-page">19</span></li>
+              </ol>
+            </li>
             <li><a href="#capitulo-2">2 Visão, objetivos e metas</a><span class="index-page">20</span></li>
-            <li><a href="#capitulo-3">3 Contexto da cidade de São Paulo</a><span class="index-page">24</span><ol><li><a href="#capitulo-3-1">3.1 Papel das cidades na mudança do clima</a><span class="index-page">26</span></li><li><a href="#capitulo-3-2">3.2 Características demográficas, econômicas e socioambientais</a><span class="index-page">27</span></li><li><a href="#capitulo-3-3">3.3 Dados de precipitação</a><span class="index-page">29</span></li><li><a href="#capitulo-3-4">3.4 Dados de temperatura</a><span class="index-page">30</span></li><li><a href="#capitulo-3-5">3.5 Outros registros de extremos climáticos</a><span class="index-page">35</span></li></ol></li>
-            <li><a href="#capitulo-4">4 Síntese atualizada do inventário de gases de efeito estufa</a><span class="index-page">36</span><ol><li><a href="#capitulo-4-1">4.1 Distribuição setorial das emissões</a><span class="index-page">41</span></li><li><a href="#capitulo-4-2">4.2 Metas de redução de emissões</a><span class="index-page">42</span></li><li><a href="#capitulo-4-3">4.3 Emissões projetadas e observadas</a><span class="index-page">46</span></li><li><a href="#capitulo-4-4">4.4 Considerações complementares</a><span class="index-page">50</span></li></ol></li>
-            <li><a href="#capitulo-5">5 Avaliação dos riscos climáticos da cidade</a><span class="index-page">52</span></li>
+            <li><a href="#capitulo-3">3 Contexto da cidade de São Paulo</a><span class="index-page">24</span>
+              <ol>
+                <li><a href="#capitulo-3-1">3.1 Papel das cidades na mudança do clima</a><span
+                    class="index-page">26</span></li>
+                <li><a href="#capitulo-3-2">3.2 Características demográficas, econômicas e socioambientais</a><span
+                    class="index-page">27</span></li>
+                <li><a href="#capitulo-3-3">3.3 Dados de precipitação</a><span class="index-page">29</span></li>
+                <li><a href="#capitulo-3-4">3.4 Dados de temperatura</a><span class="index-page">30</span></li>
+                <li><a href="#capitulo-3-5">3.5 Outros registros de extremos climáticos</a><span
+                    class="index-page">35</span></li>
+              </ol>
+            </li>
+            <li><a href="#capitulo-4">4 Síntese atualizada do inventário de gases de efeito estufa</a><span
+                class="index-page">36</span>
+              <ol>
+                <li><a href="#capitulo-4-1">4.1 Distribuição setorial das emissões</a><span class="index-page">41</span>
+                </li>
+                <li><a href="#capitulo-4-2">4.2 Metas de redução de emissões</a><span class="index-page">42</span></li>
+                <li><a href="#capitulo-4-3">4.3 Emissões projetadas e observadas</a><span class="index-page">46</span>
+                </li>
+                <li><a href="#capitulo-4-4">4.4 Considerações complementares</a><span class="index-page">50</span></li>
+              </ol>
+            </li>
+            <li><a href="#capitulo-5">5 Avaliação dos riscos climáticos da cidade</a><span class="index-page">52</span>
+            </li>
             <li><a href="#capitulo-6">6 Justiça climática</a><span class="index-page">60</span></li>
-            <li><a href="#capitulo-7">7 Balanço 2021-2024</a><span class="index-page">66</span><ol><li><a href="#capitulo-7-1">7.1 Geral</a><span class="index-page">66</span></li><li><a href="#capitulo-7-2">7.2 Balanço do 4º relatório de acompanhamento por estratégia</a><span class="index-page">67</span></li></ol></li>
-            <li><a href="#capitulo-8">8 Metodologia e processos de atualização</a><span class="index-page">70</span><ol><li><a href="#capitulo-8-1">8.1 Abordagem geral de revisão e nova estrutura</a><span class="index-page">72</span></li><li><a href="#capitulo-8-2">8.2 Construção da revisão</a><span class="index-page">74</span></li><li><a href="#capitulo-8-3">8.3 Contribuições recebidas e como foram incorporadas</a><span class="index-page">75</span></li></ol></li>
-            <li><a href="#capitulo-9">9 Plano de ação – nosso caminho até 2050</a><span class="index-page">78</span><ol><li><a href="#capitulo-9-1">9.1 Rumo Ao Carbono Zero</a><span class="index-page">85</span></li><li><a href="#capitulo-9-2">9.2 Adaptar a cidade de hoje para o amanhã</a><span class="index-page">127</span></li><li><a href="#capitulo-9-3">9.3 Proteger Pessoas e Bens</a><span class="index-page">165</span></li><li><a href="#capitulo-9-4">9.4 Cuidar dos Biomas, fortalecer a cidade</a><span class="index-page">192</span></li><li><a href="#capitulo-9-5">9.5 Gerar trabalho e riqueza sustentáveis</a><span class="index-page">198</span></li></ol></li>
-            <li><a href="#capitulo-10">10 Governança para a ação climática</a><span class="index-page">218</span><ol><li><a href="#capitulo-10-1">10.1 Instâncias de governança para ação climática</a><span class="index-page">221</span></li><li><a href="#capitulo-10-2">10.2 Orçamento Climático</a><span class="index-page">222</span></li><li><a href="#capitulo-10-3">10.3 Atores externos</a><span class="index-page">223</span></li><li><a href="#capitulo-10-4">10.4 Sistema de Monitoramento e Reporte</a><span class="index-page">226</span></li><li><a href="#capitulo-10-5">10.5 Plataformas de visualização e reporte de dados do Município de São Paulo</a><span class="index-page">226</span></li></ol></li>
+            <li><a href="#capitulo-7">7 Balanço 2021-2024</a><span class="index-page">66</span>
+              <ol>
+                <li><a href="#capitulo-7-1">7.1 Geral</a><span class="index-page">66</span></li>
+                <li><a href="#capitulo-7-2">7.2 Balanço do 4º relatório de acompanhamento por estratégia</a><span
+                    class="index-page">67</span></li>
+              </ol>
+            </li>
+            <li><a href="#capitulo-8">8 Metodologia e processos de atualização</a><span class="index-page">70</span>
+              <ol>
+                <li><a href="#capitulo-8-1">8.1 Abordagem geral de revisão e nova estrutura</a><span
+                    class="index-page">72</span></li>
+                <li><a href="#capitulo-8-2">8.2 Construção da revisão</a><span class="index-page">74</span></li>
+                <li><a href="#capitulo-8-3">8.3 Contribuições recebidas e como foram incorporadas</a><span
+                    class="index-page">75</span></li>
+              </ol>
+            </li>
+            <li><a href="#capitulo-9">9 Plano de ação – nosso caminho até 2050</a><span class="index-page">78</span>
+              <ol>
+                <li><a href="#capitulo-9-1">9.1 Rumo Ao Carbono Zero</a><span class="index-page">85</span></li>
+                <li><a href="#capitulo-9-2">9.2 Adaptar a cidade de hoje para o amanhã</a><span
+                    class="index-page">127</span></li>
+                <li><a href="#capitulo-9-3">9.3 Proteger Pessoas e Bens</a><span class="index-page">165</span></li>
+                <li><a href="#capitulo-9-4">9.4 Cuidar dos Biomas, fortalecer a cidade</a><span
+                    class="index-page">192</span></li>
+                <li><a href="#capitulo-9-5">9.5 Gerar trabalho e riqueza sustentáveis</a><span
+                    class="index-page">198</span></li>
+              </ol>
+            </li>
+            <li><a href="#capitulo-10">10 Governança para a ação climática</a><span class="index-page">218</span>
+              <ol>
+                <li><a href="#capitulo-10-1">10.1 Instâncias de governança para ação climática</a><span
+                    class="index-page">221</span></li>
+                <li><a href="#capitulo-10-2">10.2 Orçamento Climático</a><span class="index-page">222</span></li>
+                <li><a href="#capitulo-10-3">10.3 Atores externos</a><span class="index-page">223</span></li>
+                <li><a href="#capitulo-10-4">10.4 Sistema de Monitoramento e Reporte</a><span
+                    class="index-page">226</span></li>
+                <li><a href="#capitulo-10-5">10.5 Plataformas de visualização e reporte de dados do Município de São
+                    Paulo</a><span class="index-page">226</span></li>
+              </ol>
+            </li>
             <li><a href="#equipe-tecnica">Equipe técnica</a><span class="index-page">228</span></li>
             <li><a href="#referencias">Referências</a><span class="index-page">230</span></li>
           </ol>
-          <nav class="page-navigation" aria-label="Navegação a partir do sumário"><span></span><a href="#palavra-prefeito">Próximo: Palavra do Prefeito →</a></nav>
+          <nav class="page-navigation" aria-label="Navegação a partir do sumário"><span></span><a
+              href="#palavra-prefeito">Próximo: Palavra do Prefeito →</a></nav>
         </section>
 
-        <section class="document-section document-view placeholder-view" id="palavra-prefeito" data-view="palavra-prefeito" aria-labelledby="titulo-palavra-prefeito" tabindex="-1"><span class="eyebrow">Página 12 do PDF</span><h2 id="titulo-palavra-prefeito">Palavra do Prefeito</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><nav class="page-navigation" aria-label="Navegação"><a href="#sumario">← Sumário</a><a href="#palavra-secretario">Próximo: Palavra do Secretário →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="palavra-secretario" data-view="palavra-secretario" aria-labelledby="titulo-palavra-secretario" tabindex="-1"><span class="eyebrow">Página 14 do PDF</span><h2 id="titulo-palavra-secretario">Palavra do Secretário Executivo de Mudanças Climáticas</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><nav class="page-navigation" aria-label="Navegação"><a href="#palavra-prefeito">← Palavra do Prefeito</a><a href="#capitulo-1">Próximo: Apresentação →</a></nav></section>
+        bstitua todo o bloco com id="palavra-prefeito" por:
 
-        <section class="document-section document-view" id="capitulo-1" data-view="capitulo-1" aria-labelledby="titulo-capitulo-1" tabindex="-1">
+        <section class="document-section document-view" id="palavra-prefeito" data-view="palavra-prefeito"
+          aria-labelledby="titulo-palavra-prefeito" tabindex="-1">
+          <span class="eyebrow">Páginas 12–13 do PDF</span>
+
+          <h2 id="titulo-palavra-prefeito">Palavra do Prefeito</h2>
+
+          <p>
+            A cidade de São Paulo se consolidou nos últimos anos como referência
+            global em sustentabilidade urbana. Foi reconhecida pela ONU como “Cidade
+            Modelo de Desenvolvimento Sustentável” e “Cidade Árvore do Mundo”, em
+            razão do conjunto de políticas de arborização, mobilidade limpa e
+            recuperação de áreas verdes.
+          </p>
+
+          <p>
+            Ponto importantíssimo dessa cruzada foi a criação do Plano de Ação
+            Climática de São Paulo (PlanClima SP), em sintonia com o compromisso
+            global de conter o aumento da temperatura média do planeta.
+          </p>
+
+          <p>
+            E agora, em 2025, reforçamos nosso empenho fazendo, além das avaliações
+            anuais, a revisão estrutural do PlanClima SP, que define os próximos
+            passos da transição ecológica, com metas até 2050 para neutralização de
+            emissões e resiliência urbana.
+          </p>
+
+          <p>
+            Nessa revisão, merece destaque o ineditismo do Orçamento Climático, que
+            passa a integrar o Orçamento Geral do Município de São Paulo, conferindo
+            maior gestão, monitoramento e avaliação das ações climáticas.
+          </p>
+
+          <p>
+            Não dá para falar em preservar o meio ambiente sem falar de recursos. E
+            é com foco nisso que se insere o Orçamento Climático. Afinal, para
+            transformar a frota a diesel em frota elétrica, levantamos R$ 6,5
+            bilhões. Em outro exemplo, estamos investindo R$ 14 bilhões na construção
+            de quatro Ecoparques e quatro Unidades de Recuperação Energética (UREs),
+            que vão gerar 250 mil megawatts cada, o suficiente para abastecer 75% da
+            energia pública da cidade. É o Orçamento Climático em ação.
+          </p>
+
+          <p>
+            Outra novidade trazida pela revisão do PlanClima SP foi o foco na Justiça
+            Climática, incluindo metas que se destinam a grupos prioritários e
+            vulneráveis, concentrando o olhar para além das vulnerabilidades
+            socioeconômicas e contemplando, por exemplo, a primeira infância e outros
+            segmentos sensíveis aos impactos climáticos.
+          </p>
+
+          <p>
+            Finalmente merece destaque a ampliação do número de secretarias
+            envolvidas no PlanClima SP, de 13 para 24, com a inclusão de novas pastas
+            responsáveis por metas específicas, que vão ampliar ainda mais o
+            comprometimento da cidade com a questão climática.
+          </p>
+
+          <p>
+            Em meio aos desdobramentos da COP30, a 30ª Conferência das Nações Unidas
+            sobre Mudança do Clima, quando governos e a sociedade civil mostraram o
+            que pretendem fazer para combater as mudanças climáticas, São Paulo dá o
+            exemplo e mostra o que já está fazendo. Ações concretas como, por exemplo,
+            o plantio de 150 mil árvores somente em 2025, a coleta seletiva em todas
+            as ruas da cidade, entre tantos outros avanços.
+          </p>
+
+          <footer class="document-subsection">
+            <p>
+              <strong>Ricardo Nunes</strong><br>
+              Prefeito do Município de São Paulo
+            </p>
+          </footer>
+
+          <nav class="page-navigation" aria-label="Navegação da Palavra do Prefeito">
+            <a href="#sumario">← Sumário</a>
+            <a href="#palavra-secretario">
+              Próximo: Palavra do Secretário →
+            </a>
+          </nav>
+        </section>
+        <section class="document-section document-view" id="palavra-secretario" data-view="palavra-secretario"
+          aria-labelledby="titulo-palavra-secretario" tabindex="-1">
+          <span class="eyebrow">Páginas 14–15 do PDF</span>
+
+          <h2 id="titulo-palavra-secretario">
+            Palavra do Secretário Executivo de Mudanças Climáticas
+          </h2>
+
+          <p>
+            O Plano de Ação Climática de São Paulo, fruto de visionária Gestão
+            Municipal, entra em nova e promissora fase.
+          </p>
+
+          <p>
+            A vertente da variável climática foi absorvida por todas as Secretarias
+            Municipais e um trabalho coeso e firme evidenciou que a maior cidade do
+            Brasil lidera o protagonismo ecológico e promove ações concretas que a
+            convertem num padrão de resiliência.
+          </p>
+
+          <p>
+            Além das avaliações anuais, a revisão estrutural em 2025 mantém as
+            diretrizes rumo à descarbonização total em 2050, fiel ao compromisso
+            brasileiro firmado no Acordo de Paris em 2015 e mantém a meta de
+            transição energética, avançando na eletrificação de sua frota de ônibus.
+          </p>
+
+          <p>
+            Adquiriu-se expertise suficiente para aprimorar suas métricas e
+            monitoramento, mediante análise técnica primorosa, conduzida,
+            prioritariamente, por zelosa equipe de especialistas.
+          </p>
+
+          <p>
+            A comunidade foi ouvida e participou com sugestões válidas e
+            efetivamente aproveitadas, inclusive ofertadas pelo prestimoso
+            Legislativo Paulistano.
+          </p>
+
+          <p>
+            Destaca-se o pioneirismo do Orçamento Climático, a integrar o Orçamento
+            Geral do Município de São Paulo, de maneira a propiciar a execução de
+            tudo aquilo que interfere com os fenômenos extremos, cada vez mais
+            intensos e frequentes.
+          </p>
+
+          <p>
+            Na versão inicial, eram treze as Secretarias diretamente envolvidas e a
+            versão revisitada incluiu mais onze, a evidenciar o empenho desta gestão
+            no adequado trato de uma questão que é o maior desafio já enfrentado
+            pela humanidade.
+          </p>
+
+          <p>
+            Enfatizou-se o tema “Justiça Climática”, para melhor tutela dos
+            vulneráveis e para a conscientização da cidadania quanto à
+            responsabilidade partilhada em relação à adaptação da metrópole para o
+            que ainda há de vir.
+          </p>
+
+          <p>
+            Cumpre agora implementar as estratégias atualizadas e conclamar a
+            população a colaborar, pois a execução do PlanClima SP, por sua dimensão
+            e abrangência, é tarefa de todos.
+          </p>
+
+          <footer class="document-subsection">
+            <p>
+              <strong>José Renato Nalini</strong><br>
+              Secretário Executivo de Mudanças Climáticas<br>
+              do Município de São Paulo
+            </p>
+          </footer>
+
+          <nav class="page-navigation" aria-label="Navegação da Palavra do Secretário Executivo de Mudanças Climáticas">
+            <a href="#palavra-prefeito">← Palavra do Prefeito</a>
+            <a href="#capitulo-1">Próximo: Apresentação →</a>
+          </nav>
+        </section>
+
+        <section class="document-section document-view" id="capitulo-1" data-view="capitulo-1"
+          aria-labelledby="titulo-capitulo-1" tabindex="-1">
           <span class="eyebrow">Capítulo 1 · páginas 16–19 do PDF</span><span class="theme-word">Meio ambiente</span>
           <h2 id="titulo-capitulo-1">1 Apresentação</h2>
-          <figure class="chapter-figure"><img src="assets/images/masp-avenida-paulista.jpg" alt="Vista aérea do Museu de Arte de São Paulo, o Masp, cercado por árvores e edifícios na Avenida Paulista" width="1712" height="729"><figcaption>Vista área do Masp, na Avenida Paulista<br>Secom</figcaption></figure>
-          <p>Este documento refere-se à revisão do Plano de Ação Climática do Município de São Paulo (PlanClima SP), que busca orientar a atuação do governo municipal, incorporando de forma sistemática a variável climática aos processos de tomada de decisão. O PlanClima SP surge em um contexto de ação imediata, uma vez que as mudanças climáticas já estão em curso e vêm impondo novas formas de viver e de organizar a cidade. Nesse sentido, é fundamental que o Município de São Paulo acompanhe essas transformações. Assim, o Plano apresenta-se não apenas como um avanço no campo ambiental, mas também como um instrumento estratégico de grande relevância para a administração municipal, ao direcionar e qualificar as políticas climáticas da cidade.</p>
-          <p>Para assegurar o alinhamento contínuo, o acompanhamento das transformações em curso e a incorporação de novos conhecimentos e diretrizes, o PlanClima SP deve ser revisado, no mínimo, a cada novo ciclo de governo. Dessa forma, a revisão do Plano tem como propósito fortalecer seus mecanismos de acompanhamento e governança, bem como ampliar a integração com metas e compromissos nacionais e internacionais, como as Contribuições Nacionalmente Determinadas (NDCs), os Objetivos do Desenvolvimento Sustentável (ODS) e o Acordo de Paris. A Prefeitura reconhece que este é um momento para agir, que a frequência e a intensidade dos eventos climáticos tendem a aumentar, e que é necessário estar cada vez mais preparada para enfrentar esses desafios.</p>
-          <p>A revisão, iniciada em janeiro de 2025, pela Secretaria Executiva de Mudanças Climáticas, contou com o apoio técnico das secretarias municipais, por meio do Grupo de Trabalho Intersecretarial (GTI), e da sociedade civil, por meio dos processos participativos estabelecidos, como a criação de um Grupo de Trabalho Participativo (GTP) e Consulta Pública.</p>
+          <figure class="chapter-figure"><img src="assets/images/masp-avenida-paulista.jpg"
+              alt="Vista aérea do Museu de Arte de São Paulo, o Masp, cercado por árvores e edifícios na Avenida Paulista"
+              width="1712" height="729">
+            <figcaption>Vista área do Masp, na Avenida Paulista<br>Secom</figcaption>
+          </figure>
+          <p>Este documento refere-se à revisão do Plano de Ação Climática do Município de São Paulo (PlanClima SP), que
+            busca orientar a atuação do governo municipal, incorporando de forma sistemática a variável climática aos
+            processos de tomada de decisão. O PlanClima SP surge em um contexto de ação imediata, uma vez que as
+            mudanças climáticas já estão em curso e vêm impondo novas formas de viver e de organizar a cidade. Nesse
+            sentido, é fundamental que o Município de São Paulo acompanhe essas transformações. Assim, o Plano
+            apresenta-se não apenas como um avanço no campo ambiental, mas também como um instrumento estratégico de
+            grande relevância para a administração municipal, ao direcionar e qualificar as políticas climáticas da
+            cidade.</p>
+          <p>Para assegurar o alinhamento contínuo, o acompanhamento das transformações em curso e a incorporação de
+            novos conhecimentos e diretrizes, o PlanClima SP deve ser revisado, no mínimo, a cada novo ciclo de governo.
+            Dessa forma, a revisão do Plano tem como propósito fortalecer seus mecanismos de acompanhamento e
+            governança, bem como ampliar a integração com metas e compromissos nacionais e internacionais, como as
+            Contribuições Nacionalmente Determinadas (NDCs), os Objetivos do Desenvolvimento Sustentável (ODS) e o
+            Acordo de Paris. A Prefeitura reconhece que este é um momento para agir, que a frequência e a intensidade
+            dos eventos climáticos tendem a aumentar, e que é necessário estar cada vez mais preparada para enfrentar
+            esses desafios.</p>
+          <p>A revisão, iniciada em janeiro de 2025, pela Secretaria Executiva de Mudanças Climáticas, contou com o
+            apoio técnico das secretarias municipais, por meio do Grupo de Trabalho Intersecretarial (GTI), e da
+            sociedade civil, por meio dos processos participativos estabelecidos, como a criação de um Grupo de Trabalho
+            Participativo (GTP) e Consulta Pública.</p>
           <h3 id="contextualizacao" tabindex="-1">1.1 Contextualização, marco legal e institucional</h3>
-          <p>A elaboração da primeira versão do Plano contou com o apoio da rede de cidades C40, bem como a participação ativa da sociedade civil, da academia e de diversas secretarias e órgãos municipais. Em 2021, o PlanClima SP foi oficialmente publicado por meio do Decreto nº 60.289, de 3 de junho de 2021.</p>
-          <p>De acordo com o Decreto, cabe à Secretaria Executiva de Mudanças Climáticas (SECLIMA), vinculada à Secretaria de Governo Municipal (SGM), acompanhar a implementação do PlanClima SP, a partir da elaboração do Relatório de Acompanhamento, bem como a realização de sua revisão.</p>
-          <p>Cabe ainda destacar, que o PlanClima SP, enquanto instrumento estratégico de longo prazo e integrante do Sistema Municipal de Planejamento Urbano instituído pelo Plano Diretor Estratégico de São Paulo (PDE – Lei nº 16.050/2014 e suas revisões), deve ser objeto de monitoramento e revisão contínuos, em articulação com o PDE. Esse alinhamento é fundamental para assegurar a incorporação progressiva das diretrizes e avanços relacionados às mudanças climáticas, inclusive no âmbito da próxima revisão do Plano Diretor, prevista para 2029.</p>
+          <p>A elaboração da primeira versão do Plano contou com o apoio da rede de cidades C40, bem como a participação
+            ativa da sociedade civil, da academia e de diversas secretarias e órgãos municipais. Em 2021, o PlanClima SP
+            foi oficialmente publicado por meio do Decreto nº 60.289, de 3 de junho de 2021.</p>
+          <p>De acordo com o Decreto, cabe à Secretaria Executiva de Mudanças Climáticas (SECLIMA), vinculada à
+            Secretaria de Governo Municipal (SGM), acompanhar a implementação do PlanClima SP, a partir da elaboração do
+            Relatório de Acompanhamento, bem como a realização de sua revisão.</p>
+          <p>Cabe ainda destacar, que o PlanClima SP, enquanto instrumento estratégico de longo prazo e integrante do
+            Sistema Municipal de Planejamento Urbano instituído pelo Plano Diretor Estratégico de São Paulo (PDE – Lei
+            nº 16.050/2014 e suas revisões), deve ser objeto de monitoramento e revisão contínuos, em articulação com o
+            PDE. Esse alinhamento é fundamental para assegurar a incorporação progressiva das diretrizes e avanços
+            relacionados às mudanças climáticas, inclusive no âmbito da próxima revisão do Plano Diretor, prevista para
+            2029.</p>
           <h3 id="historico" tabindex="-1">Histórico das ações que levaram até a versão atual</h3>
           <ol class="history-timeline">
-            <li><time datetime="1991">1991</time><p>São Paulo foi uma das cidades fundadoras do ICLEI.</p></li>
-            <li><time datetime="2005">2005</time><p>São Paulo associou-se a outras 17 cidades na criação daquilo que viria a ser o Grupo C40 de Grandes Cidades para a Liderança Climática.</p><p>Criação do Comitê Municipal de Mudanças Climáticas e Ecoeconomia Sustentável.</p></li>
-            <li><time datetime="2009">2009</time><p>Promulgação da Política Municipal de Mudança do Clima, por meio da Lei nº 14.933/2009, consolidando o antigo Comitê criado em 2005 como Comitê Municipal de Mudança do Clima e Ecoeconomia.</p></li>
-            <li><time datetime="2011">2011</time><p>Publicação do documento Diretrizes para o Plano de Ação da Cidade de São Paulo para Mitigação e Adaptação às Mudanças Climáticas.</p></li>
-            <li><time datetime="2012">2012</time><p>Publicação do resultado inicial do Inventário de Gases de Efeito Estufa (períodos 2003–2009 e 2010–2011).</p></li>
-            <li><time datetime="2014">2014</time><p>Plano Diretor Estratégico (PDE)-Lei 16.050/2014, reconhece formalmente como objetivo estratégico da Política de Desenvolvimento Urbano a mitigação das emissões de gases de efeito estufa e a adaptação aos impactos da mudança do climáticas.</p></li>
-            <li><time datetime="2018">2018</time><p>PMSP ASSINA O COMPROMISSO DEADLINE 2020, PROPOSTO PELA C40.</p></li>
-            <li><time datetime="2019">2019</time><p>Início da elaboração do Plano de Ação Climática do Município de São Paulo (PlanClima SP).</p><p>Publicação do terceiro inventário de emissões de gases de efeito estufa (período 2010–2017).</p></li>
-            <li><time datetime="2021">2021</time><p>Decreto nº 60.289/2021 institui o Plano de Ação Climática do Município de São Paulo – PlanClima SP.</p><p>Decreto nº 60.290/2021 dispõe sobre as atribuições da Secretaria Executiva de Mudanças Climáticas (SECLIMA).</p></li>
-            <li><time datetime="2022">2022–25</time><p>Publicação anual dos Relatórios de Acompanhamento do PlanClima SP.</p><p>Publicação dos Inventários de Emissão de Gases de Efeito Estufa (período 2018–2022).</p></li>
-            <li><time datetime="2025">2025</time><p>PRIMEIRA REVISÃO DO PLANCLIMA SP.</p></li>
+            <li><time datetime="1991">1991</time>
+              <p>São Paulo foi uma das cidades fundadoras do ICLEI.</p>
+            </li>
+            <li><time datetime="2005">2005</time>
+              <p>São Paulo associou-se a outras 17 cidades na criação daquilo que viria a ser o Grupo C40 de Grandes
+                Cidades para a Liderança Climática.</p>
+              <p>Criação do Comitê Municipal de Mudanças Climáticas e Ecoeconomia Sustentável.</p>
+            </li>
+            <li><time datetime="2009">2009</time>
+              <p>Promulgação da Política Municipal de Mudança do Clima, por meio da Lei nº 14.933/2009, consolidando o
+                antigo Comitê criado em 2005 como Comitê Municipal de Mudança do Clima e Ecoeconomia.</p>
+            </li>
+            <li><time datetime="2011">2011</time>
+              <p>Publicação do documento Diretrizes para o Plano de Ação da Cidade de São Paulo para Mitigação e
+                Adaptação às Mudanças Climáticas.</p>
+            </li>
+            <li><time datetime="2012">2012</time>
+              <p>Publicação do resultado inicial do Inventário de Gases de Efeito Estufa (períodos 2003–2009 e
+                2010–2011).</p>
+            </li>
+            <li><time datetime="2014">2014</time>
+              <p>Plano Diretor Estratégico (PDE)-Lei 16.050/2014, reconhece formalmente como objetivo estratégico da
+                Política de Desenvolvimento Urbano a mitigação das emissões de gases de efeito estufa e a adaptação aos
+                impactos da mudança do climáticas.</p>
+            </li>
+            <li><time datetime="2018">2018</time>
+              <p>PMSP ASSINA O COMPROMISSO DEADLINE 2020, PROPOSTO PELA C40.</p>
+            </li>
+            <li><time datetime="2019">2019</time>
+              <p>Início da elaboração do Plano de Ação Climática do Município de São Paulo (PlanClima SP).</p>
+              <p>Publicação do terceiro inventário de emissões de gases de efeito estufa (período 2010–2017).</p>
+            </li>
+            <li><time datetime="2021">2021</time>
+              <p>Decreto nº 60.289/2021 institui o Plano de Ação Climática do Município de São Paulo – PlanClima SP.</p>
+              <p>Decreto nº 60.290/2021 dispõe sobre as atribuições da Secretaria Executiva de Mudanças Climáticas
+                (SECLIMA).</p>
+            </li>
+            <li><time datetime="2022">2022–25</time>
+              <p>Publicação anual dos Relatórios de Acompanhamento do PlanClima SP.</p>
+              <p>Publicação dos Inventários de Emissão de Gases de Efeito Estufa (período 2018–2022).</p>
+            </li>
+            <li><time datetime="2025">2025</time>
+              <p>PRIMEIRA REVISÃO DO PLANCLIMA SP.</p>
+            </li>
           </ol>
-          <nav class="page-navigation" aria-label="Navegação do Capítulo 1"><a href="#palavra-secretario">← Palavra do Secretário</a><a href="#capitulo-2">Próximo: Visão, objetivos e metas →</a></nav>
+          <nav class="page-navigation" aria-label="Navegação do Capítulo 1"><a href="#palavra-secretario">← Palavra do
+              Secretário</a><a href="#capitulo-2">Próximo: Visão, objetivos e metas →</a></nav>
         </section>
 
-        <section class="document-section document-view" id="capitulo-2" data-view="capitulo-2" aria-labelledby="titulo-capitulo-2" tabindex="-1">
+        <section class="document-section document-view" id="capitulo-2" data-view="capitulo-2"
+          aria-labelledby="titulo-capitulo-2" tabindex="-1">
           <span class="eyebrow">Capítulo 2 · páginas 20–23 do PDF</span><span class="theme-word">Respiro</span>
           <h2 id="titulo-capitulo-2">2 Visão, Objetivos e Metas</h2>
-          <figure class="chapter-figure"><img src="assets/images/parque-aclimacao.jpg" alt="Vista panorâmica do Parque da Aclimação, com lago e vegetação em primeiro plano e edifícios da cidade ao fundo" width="1712" height="731"><figcaption>Parque da Aclimação, no Centro da cidade<br>Ciete Silvério/Secom</figcaption></figure>
+          <figure class="chapter-figure"><img src="assets/images/parque-aclimacao.jpg"
+              alt="Vista panorâmica do Parque da Aclimação, com lago e vegetação em primeiro plano e edifícios da cidade ao fundo"
+              width="1712" height="731">
+            <figcaption>Parque da Aclimação, no Centro da cidade<br>Ciete Silvério/Secom</figcaption>
+          </figure>
           <h3>Visão</h3>
-          <p>O PlanClima SP busca o atingimento da neutralidade de emissões de gases de efeito estufa até 2050, contribuindo para o cumprimento do Acordo de Paris, com o objetivo de manter o aquecimento global abaixo de 2°C e, preferencialmente, abaixo de 1,5°C. Dessa forma, apresenta como Visão para 2050:</p>
-          <blockquote class="vision-quote">Uma cidade menos desigual e mais preparada para responder aos impactos da mudança do clima, neutra em carbono e que promova acesso a serviços públicos de qualidade, proporcionando bem-estar e desenvolvimento econômico, inclusivo e sustentável para todos.</blockquote>
+          <p>O PlanClima SP busca o atingimento da neutralidade de emissões de gases de efeito estufa até 2050,
+            contribuindo para o cumprimento do Acordo de Paris, com o objetivo de manter o aquecimento global abaixo de
+            2°C e, preferencialmente, abaixo de 1,5°C. Dessa forma, apresenta como Visão para 2050:</p>
+          <blockquote class="vision-quote">Uma cidade menos desigual e mais preparada para responder aos impactos da
+            mudança do clima, neutra em carbono e que promova acesso a serviços públicos de qualidade, proporcionando
+            bem-estar e desenvolvimento econômico, inclusivo e sustentável para todos.</blockquote>
           <div class="document-subsection" id="metas-gerais" tabindex="-1" aria-labelledby="titulo-metas-gerais">
             <h3 id="titulo-metas-gerais">Objetivos e metas gerais</h3>
-            <p>Para alcançar essa visão climática, o PlanClima SP apresenta os seguintes objetivos gerais, metas incondicionais (que dependem exclusivamente da gestão municipal) e metas condicionadas (que dependem da cooperação de atores externos à administração pública):</p>
-            <ol class="objectives-list"><li>Empreender a ação política necessária para a redução das emissões de gases de efeito estufa do Município de São Paulo, considerando as competências municipais e de atores externos.</li></ol>
-            <div class="data-region" role="region" aria-labelledby="titulo-tabela-metas" tabindex="0"><table class="data-table"><caption id="titulo-tabela-metas">Metas gerais de redução de emissões</caption><thead><tr><th scope="col">Tipo de meta</th><th scope="col">Horizonte</th><th scope="col">Compromisso</th></tr></thead><tbody>
-              <tr><th scope="row">Meta incondicional</th><td>2030</td><td>Até 2030, o Município de São Paulo deverá reduzir em 20% suas emissões de gases de efeito estufa em relação ao ano-base de 2017.</td></tr>
-              <tr><th scope="row">Meta condicionada</th><td>2030</td><td>Até 2030, o Município de São Paulo reduzirá em 50% suas emissões de gases de efeito estufa em relação ao ano-base de 2017, caso sejam realizadas ações de descarbonização que não estão sob controle direto do Município.</td></tr>
-              <tr><th scope="row">Meta condicionada</th><td>2050</td><td>Até 2050, o Município de São Paulo reduzirá a zero suas emissões líquidas de gases de efeito estufa, caso sejam realizadas ações de descarbonização que não estão sob controle direto do Município.</td></tr>
-            </tbody></table></div>
-            <ol class="objectives-list" start="2"><li>Implementar as medidas necessárias para fortalecer a resiliência do Município, reduzindo as vulnerabilidades sociais, econômicas e ambientais da população paulistana e ampliando sua capacidade de adaptação frente aos riscos climáticos existentes.</li></ol>
+            <p>Para alcançar essa visão climática, o PlanClima SP apresenta os seguintes objetivos gerais, metas
+              incondicionais (que dependem exclusivamente da gestão municipal) e metas condicionadas (que dependem da
+              cooperação de atores externos à administração pública):</p>
+            <ol class="objectives-list">
+              <li>Empreender a ação política necessária para a redução das emissões de gases de efeito estufa do
+                Município de São Paulo, considerando as competências municipais e de atores externos.</li>
+            </ol>
+            <div class="data-region" role="region" aria-labelledby="titulo-tabela-metas" tabindex="0">
+              <table class="data-table">
+                <caption id="titulo-tabela-metas">Metas gerais de redução de emissões</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Tipo de meta</th>
+                    <th scope="col">Horizonte</th>
+                    <th scope="col">Compromisso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Meta incondicional</th>
+                    <td>2030</td>
+                    <td>Até 2030, o Município de São Paulo deverá reduzir em 20% suas emissões de gases de efeito estufa
+                      em relação ao ano-base de 2017.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Meta condicionada</th>
+                    <td>2030</td>
+                    <td>Até 2030, o Município de São Paulo reduzirá em 50% suas emissões de gases de efeito estufa em
+                      relação ao ano-base de 2017, caso sejam realizadas ações de descarbonização que não estão sob
+                      controle direto do Município.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Meta condicionada</th>
+                    <td>2050</td>
+                    <td>Até 2050, o Município de São Paulo reduzirá a zero suas emissões líquidas de gases de efeito
+                      estufa, caso sejam realizadas ações de descarbonização que não estão sob controle direto do
+                      Município.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <ol class="objectives-list" start="2">
+              <li>Implementar as medidas necessárias para fortalecer a resiliência do Município, reduzindo as
+                vulnerabilidades sociais, econômicas e ambientais da população paulistana e ampliando sua capacidade de
+                adaptação frente aos riscos climáticos existentes.</li>
+            </ol>
           </div>
-          <nav class="page-navigation" aria-label="Navegação do Capítulo 2"><a href="#capitulo-1">← Capítulo 1: Apresentação</a><a href="#capitulo-3">Próximo: Contexto da cidade →</a></nav>
+          <nav class="page-navigation" aria-label="Navegação do Capítulo 2"><a href="#capitulo-1">← Capítulo 1:
+              Apresentação</a><a href="#capitulo-3">Próximo: Contexto da cidade →</a></nav>
         </section>
 
-        <section class="document-section document-view placeholder-view" id="capitulo-3" data-view="capitulo-3" aria-labelledby="titulo-capitulo-3" tabindex="-1"><span class="eyebrow">Capítulo 3 · página 24 do PDF</span><h2 id="titulo-capitulo-3">3 Contexto da cidade de São Paulo</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><ol class="placeholder-topics"><li id="capitulo-3-1" tabindex="-1">3.1 Papel das cidades na mudança do clima</li><li id="capitulo-3-2" tabindex="-1">3.2 Características demográficas, econômicas e socioambientais</li><li id="capitulo-3-3" tabindex="-1">3.3 Dados de precipitação</li><li id="capitulo-3-4" tabindex="-1">3.4 Dados de temperatura</li><li id="capitulo-3-5" tabindex="-1">3.5 Outros registros de extremos climáticos</li></ol><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-2">← Capítulo 2</a><a href="#capitulo-4">Próximo: Inventário de gases →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="capitulo-4" data-view="capitulo-4" aria-labelledby="titulo-capitulo-4" tabindex="-1"><span class="eyebrow">Capítulo 4 · página 36 do PDF</span><h2 id="titulo-capitulo-4">4 Síntese atualizada do inventário de gases de efeito estufa</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><ol class="placeholder-topics"><li id="capitulo-4-1" tabindex="-1">4.1 Distribuição setorial das emissões</li><li id="capitulo-4-2" tabindex="-1">4.2 Metas de redução de emissões</li><li id="capitulo-4-3" tabindex="-1">4.3 Emissões projetadas e observadas</li><li id="capitulo-4-4" tabindex="-1">4.4 Considerações complementares</li></ol><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-3">← Capítulo 3</a><a href="#capitulo-5">Próximo: Riscos climáticos →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="capitulo-5" data-view="capitulo-5" aria-labelledby="titulo-capitulo-5" tabindex="-1"><span class="eyebrow">Capítulo 5 · página 52 do PDF</span><h2 id="titulo-capitulo-5">5 Avaliação dos riscos climáticos da cidade</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-4">← Capítulo 4</a><a href="#capitulo-6">Próximo: Justiça climática →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="capitulo-6" data-view="capitulo-6" aria-labelledby="titulo-capitulo-6" tabindex="-1"><span class="eyebrow">Capítulo 6 · página 60 do PDF</span><h2 id="titulo-capitulo-6">6 Justiça climática</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-5">← Capítulo 5</a><a href="#capitulo-7">Próximo: Balanço 2021-2024 →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="capitulo-7" data-view="capitulo-7" aria-labelledby="titulo-capitulo-7" tabindex="-1"><span class="eyebrow">Capítulo 7 · página 66 do PDF</span><h2 id="titulo-capitulo-7">7 Balanço 2021-2024</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><ol class="placeholder-topics"><li id="capitulo-7-1" tabindex="-1">7.1 Geral</li><li id="capitulo-7-2" tabindex="-1">7.2 Balanço do 4º relatório de acompanhamento por estratégia</li></ol><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-6">← Capítulo 6</a><a href="#capitulo-8">Próximo: Metodologia →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="capitulo-8" data-view="capitulo-8" aria-labelledby="titulo-capitulo-8" tabindex="-1"><span class="eyebrow">Capítulo 8 · página 70 do PDF</span><h2 id="titulo-capitulo-8">8 Metodologia e processos de atualização</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><ol class="placeholder-topics"><li id="capitulo-8-1" tabindex="-1">8.1 Abordagem geral de revisão e nova estrutura</li><li id="capitulo-8-2" tabindex="-1">8.2 Construção da revisão</li><li id="capitulo-8-3" tabindex="-1">8.3 Contribuições recebidas e como foram incorporadas</li></ol><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-7">← Capítulo 7</a><a href="#capitulo-9">Próximo: Plano de ação →</a></nav></section>
-
-        <section class="document-section document-view" id="capitulo-9" data-view="capitulo-9" aria-labelledby="titulo-capitulo-9" tabindex="-1">
-          <span class="eyebrow">Capítulo 9 · página 78 do PDF</span><h2 id="titulo-capitulo-9">9 Plano de ação – nosso caminho até 2050</h2><p class="placeholder-message">O conteúdo integral deste capítulo será disponibilizado na versão completa. Esta demonstração inclui uma ficha de meta para exemplificar o padrão de transposição.</p>
-          <ol class="placeholder-topics"><li id="capitulo-9-1" tabindex="-1">9.1 Rumo Ao Carbono Zero</li><li id="capitulo-9-2" tabindex="-1">9.2 Adaptar a cidade de hoje para o amanhã</li><li id="capitulo-9-3" tabindex="-1">9.3 Proteger Pessoas e Bens</li><li id="capitulo-9-4" tabindex="-1">9.4 Cuidar dos Biomas, fortalecer a cidade</li><li id="capitulo-9-5" tabindex="-1">9.5 Gerar trabalho e riqueza sustentáveis</li></ol>
-          <div class="document-subsection" id="amostra-meta" tabindex="-1" aria-labelledby="titulo-amostra-meta"><span class="eyebrow">Páginas 86–87 do PDF</span><h3 id="titulo-amostra-meta">Exemplo de transposição de uma ficha de meta</h3><p>Em vez de reproduzir a ficha como imagem, cada campo passa a fazer parte da estrutura da página e pode ser lido, pesquisado e copiado separadamente.</p>
-            <article class="meta-card" aria-labelledby="titulo-meta-2"><header class="meta-card__header"><p>Rumo ao carbono zero · Meta 2</p><h3 id="titulo-meta-2">Publicar documento técnico com critérios de eficiência energética aplicáveis às edificações, com o objetivo de subsidiar futuras revisões do Código de Obras e Edificações</h3></header><div class="meta-card__body"><h4>Descrição</h4><p>A iniciativa busca reduzir a demanda energética no setor de edificações, incentivar soluções construtivas mais eficientes e contribuir para a diminuição das emissões associadas ao consumo de energia no ambiente urbano. Espera-se que o documento se torne subsídio para a próxima revisão do Plano Diretor, cuja versão vigente permanece em vigor até 2029, quando deverá ser revisada. A partir desse processo, poderão ser propostas adequações no Código de Obras, em alinhamento às novas diretrizes estabelecidas.</p><dl class="meta-card__facts"><div><dt>Indicador</dt><dd>Documento técnico com critérios de eficiência energética publicado</dd></div><div><dt>Prazo</dt><dd>2028</dd></div><div><dt>Secretaria responsável</dt><dd>SECLIMA</dd></div><div><dt>Secretarias de apoio</dt><dd>SIURB, SEHAB e SMUL</dd></div><div><dt>Setor de mitigação</dt><dd>Energia e edificações</dd></div><div><dt>Risco climático</dt><dd>Não se aplica</dd></div></dl><h4>Ações vinculadas</h4><div class="data-region" role="region" aria-labelledby="titulo-tabela-acoes" tabindex="0"><table class="data-table"><caption id="titulo-tabela-acoes">Ações para implementação da Meta 2</caption><thead><tr><th scope="col">Ação</th><th scope="col">Indicador</th><th scope="col">Prazo</th><th scope="col">Responsável</th><th scope="col">Apoio</th></tr></thead><tbody><tr><th scope="row">2.1 Criar Grupo de Trabalho para definição dos critérios de eficiência energética nas edificações, com base nos estudos de consumo publicados pela Prefeitura.</th><td>Portaria do Grupo de Trabalho publicada</td><td>2027</td><td>SECLIMA</td><td>Não se aplica</td></tr></tbody></table></div></div></article>
-          </div><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-8">← Capítulo 8</a><a href="#capitulo-10">Próximo: Governança →</a></nav>
+        <section class="document-section document-view placeholder-view" id="capitulo-3" data-view="capitulo-3"
+          aria-labelledby="titulo-capitulo-3" tabindex="-1"><span class="eyebrow">Capítulo 3 · página 24 do PDF</span>
+          <h2 id="titulo-capitulo-3">3 Contexto da cidade de São Paulo</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <ol class="placeholder-topics">
+            <li id="capitulo-3-1" tabindex="-1">3.1 Papel das cidades na mudança do clima</li>
+            <li id="capitulo-3-2" tabindex="-1">3.2 Características demográficas, econômicas e socioambientais</li>
+            <li id="capitulo-3-3" tabindex="-1">3.3 Dados de precipitação</li>
+            <li id="capitulo-3-4" tabindex="-1">3.4 Dados de temperatura</li>
+            <li id="capitulo-3-5" tabindex="-1">3.5 Outros registros de extremos climáticos</li>
+          </ol>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-2">← Capítulo 2</a><a
+              href="#capitulo-4">Próximo: Inventário de gases →</a></nav>
+        </section>
+        <section class="document-section document-view placeholder-view" id="capitulo-4" data-view="capitulo-4"
+          aria-labelledby="titulo-capitulo-4" tabindex="-1"><span class="eyebrow">Capítulo 4 · página 36 do PDF</span>
+          <h2 id="titulo-capitulo-4">4 Síntese atualizada do inventário de gases de efeito estufa</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <ol class="placeholder-topics">
+            <li id="capitulo-4-1" tabindex="-1">4.1 Distribuição setorial das emissões</li>
+            <li id="capitulo-4-2" tabindex="-1">4.2 Metas de redução de emissões</li>
+            <li id="capitulo-4-3" tabindex="-1">4.3 Emissões projetadas e observadas</li>
+            <li id="capitulo-4-4" tabindex="-1">4.4 Considerações complementares</li>
+          </ol>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-3">← Capítulo 3</a><a
+              href="#capitulo-5">Próximo: Riscos climáticos →</a></nav>
+        </section>
+        <section class="document-section document-view placeholder-view" id="capitulo-5" data-view="capitulo-5"
+          aria-labelledby="titulo-capitulo-5" tabindex="-1"><span class="eyebrow">Capítulo 5 · página 52 do PDF</span>
+          <h2 id="titulo-capitulo-5">5 Avaliação dos riscos climáticos da cidade</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-4">← Capítulo 4</a><a
+              href="#capitulo-6">Próximo: Justiça climática →</a></nav>
+        </section>
+        <section class="document-section document-view placeholder-view" id="capitulo-6" data-view="capitulo-6"
+          aria-labelledby="titulo-capitulo-6" tabindex="-1"><span class="eyebrow">Capítulo 6 · página 60 do PDF</span>
+          <h2 id="titulo-capitulo-6">6 Justiça climática</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-5">← Capítulo 5</a><a
+              href="#capitulo-7">Próximo: Balanço 2021-2024 →</a></nav>
+        </section>
+        <section class="document-section document-view placeholder-view" id="capitulo-7" data-view="capitulo-7"
+          aria-labelledby="titulo-capitulo-7" tabindex="-1"><span class="eyebrow">Capítulo 7 · página 66 do PDF</span>
+          <h2 id="titulo-capitulo-7">7 Balanço 2021-2024</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <ol class="placeholder-topics">
+            <li id="capitulo-7-1" tabindex="-1">7.1 Geral</li>
+            <li id="capitulo-7-2" tabindex="-1">7.2 Balanço do 4º relatório de acompanhamento por estratégia</li>
+          </ol>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-6">← Capítulo 6</a><a
+              href="#capitulo-8">Próximo: Metodologia →</a></nav>
+        </section>
+        <section class="document-section document-view placeholder-view" id="capitulo-8" data-view="capitulo-8"
+          aria-labelledby="titulo-capitulo-8" tabindex="-1"><span class="eyebrow">Capítulo 8 · página 70 do PDF</span>
+          <h2 id="titulo-capitulo-8">8 Metodologia e processos de atualização</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <ol class="placeholder-topics">
+            <li id="capitulo-8-1" tabindex="-1">8.1 Abordagem geral de revisão e nova estrutura</li>
+            <li id="capitulo-8-2" tabindex="-1">8.2 Construção da revisão</li>
+            <li id="capitulo-8-3" tabindex="-1">8.3 Contribuições recebidas e como foram incorporadas</li>
+          </ol>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-7">← Capítulo 7</a><a
+              href="#capitulo-9">Próximo: Plano de ação →</a></nav>
         </section>
 
-        <section class="document-section document-view placeholder-view" id="capitulo-10" data-view="capitulo-10" aria-labelledby="titulo-capitulo-10" tabindex="-1"><span class="eyebrow">Capítulo 10 · página 218 do PDF</span><h2 id="titulo-capitulo-10">10 Governança para a ação climática</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><ol class="placeholder-topics"><li id="capitulo-10-1" tabindex="-1">10.1 Instâncias de governança para ação climática</li><li id="capitulo-10-2" tabindex="-1">10.2 Orçamento Climático</li><li id="capitulo-10-3" tabindex="-1">10.3 Atores externos</li><li id="capitulo-10-4" tabindex="-1">10.4 Sistema de Monitoramento e Reporte</li><li id="capitulo-10-5" tabindex="-1">10.5 Plataformas de visualização e reporte de dados do Município de São Paulo</li></ol><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-9">← Capítulo 9</a><a href="#equipe-tecnica">Próximo: Equipe técnica →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="equipe-tecnica" data-view="equipe-tecnica" aria-labelledby="titulo-equipe-tecnica" tabindex="-1"><span class="eyebrow">Página 228 do PDF</span><h2 id="titulo-equipe-tecnica">Equipe técnica</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-10">← Capítulo 10</a><a href="#referencias">Próximo: Referências →</a></nav></section>
-        <section class="document-section document-view placeholder-view" id="referencias" data-view="referencias" aria-labelledby="titulo-referencias" tabindex="-1"><span class="eyebrow">Página 230 do PDF</span><h2 id="titulo-referencias">Referências</h2><p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p><nav class="page-navigation" aria-label="Navegação"><a href="#equipe-tecnica">← Equipe técnica</a><a href="#sumario">Voltar ao sumário ↑</a></nav></section>
+        <section class="document-section document-view" id="capitulo-9" data-view="capitulo-9"
+          aria-labelledby="titulo-capitulo-9" tabindex="-1">
+          <span class="eyebrow">Capítulo 9 · página 78 do PDF</span>
+          <h2 id="titulo-capitulo-9">9 Plano de ação – nosso caminho até 2050</h2>
+          <p class="placeholder-message">O conteúdo integral deste capítulo será disponibilizado na versão completa.
+            Esta demonstração inclui uma ficha de meta para exemplificar o padrão de transposição.</p>
+          <ol class="placeholder-topics">
+            <li id="capitulo-9-1" tabindex="-1">9.1 Rumo Ao Carbono Zero</li>
+            <li id="capitulo-9-2" tabindex="-1">9.2 Adaptar a cidade de hoje para o amanhã</li>
+            <li id="capitulo-9-3" tabindex="-1">9.3 Proteger Pessoas e Bens</li>
+            <li id="capitulo-9-4" tabindex="-1">9.4 Cuidar dos Biomas, fortalecer a cidade</li>
+            <li id="capitulo-9-5" tabindex="-1">9.5 Gerar trabalho e riqueza sustentáveis</li>
+          </ol>
+          <div class="document-subsection" id="amostra-meta" tabindex="-1" aria-labelledby="titulo-amostra-meta"><span
+              class="eyebrow">Páginas 86–87 do PDF</span>
+            <h3 id="titulo-amostra-meta">Exemplo de transposição de uma ficha de meta</h3>
+            <p>Em vez de reproduzir a ficha como imagem, cada campo passa a fazer parte da estrutura da página e pode
+              ser lido, pesquisado e copiado separadamente.</p>
+            <article class="meta-card" aria-labelledby="titulo-meta-2">
+              <header class="meta-card__header">
+                <p>Rumo ao carbono zero · Meta 2</p>
+                <h3 id="titulo-meta-2">Publicar documento técnico com critérios de eficiência energética aplicáveis às
+                  edificações, com o objetivo de subsidiar futuras revisões do Código de Obras e Edificações</h3>
+              </header>
+              <div class="meta-card__body">
+                <h4>Descrição</h4>
+                <p>A iniciativa busca reduzir a demanda energética no setor de edificações, incentivar soluções
+                  construtivas mais eficientes e contribuir para a diminuição das emissões associadas ao consumo de
+                  energia no ambiente urbano. Espera-se que o documento se torne subsídio para a próxima revisão do
+                  Plano Diretor, cuja versão vigente permanece em vigor até 2029, quando deverá ser revisada. A partir
+                  desse processo, poderão ser propostas adequações no Código de Obras, em alinhamento às novas
+                  diretrizes estabelecidas.</p>
+                <dl class="meta-card__facts">
+                  <div>
+                    <dt>Indicador</dt>
+                    <dd>Documento técnico com critérios de eficiência energética publicado</dd>
+                  </div>
+                  <div>
+                    <dt>Prazo</dt>
+                    <dd>2028</dd>
+                  </div>
+                  <div>
+                    <dt>Secretaria responsável</dt>
+                    <dd>SECLIMA</dd>
+                  </div>
+                  <div>
+                    <dt>Secretarias de apoio</dt>
+                    <dd>SIURB, SEHAB e SMUL</dd>
+                  </div>
+                  <div>
+                    <dt>Setor de mitigação</dt>
+                    <dd>Energia e edificações</dd>
+                  </div>
+                  <div>
+                    <dt>Risco climático</dt>
+                    <dd>Não se aplica</dd>
+                  </div>
+                </dl>
+                <h4>Ações vinculadas</h4>
+                <div class="data-region" role="region" aria-labelledby="titulo-tabela-acoes" tabindex="0">
+                  <table class="data-table">
+                    <caption id="titulo-tabela-acoes">Ações para implementação da Meta 2</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Ação</th>
+                        <th scope="col">Indicador</th>
+                        <th scope="col">Prazo</th>
+                        <th scope="col">Responsável</th>
+                        <th scope="col">Apoio</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">2.1 Criar Grupo de Trabalho para definição dos critérios de eficiência
+                          energética nas edificações, com base nos estudos de consumo publicados pela Prefeitura.</th>
+                        <td>Portaria do Grupo de Trabalho publicada</td>
+                        <td>2027</td>
+                        <td>SECLIMA</td>
+                        <td>Não se aplica</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </article>
+          </div>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-8">← Capítulo 8</a><a
+              href="#capitulo-10">Próximo: Governança →</a></nav>
+        </section>
+
+        <section class="document-section document-view placeholder-view" id="capitulo-10" data-view="capitulo-10"
+          aria-labelledby="titulo-capitulo-10" tabindex="-1"><span class="eyebrow">Capítulo 10 · página 218 do
+            PDF</span>
+          <h2 id="titulo-capitulo-10">10 Governança para a ação climática</h2>
+          <p class="placeholder-message">Conteúdo a ser disponibilizado na versão completa do PlanClima SP na web.</p>
+          <ol class="placeholder-topics">
+            <li id="capitulo-10-1" tabindex="-1">10.1 Instâncias de governança para ação climática</li>
+            <li id="capitulo-10-2" tabindex="-1">10.2 Orçamento Climático</li>
+            <li id="capitulo-10-3" tabindex="-1">10.3 Atores externos</li>
+            <li id="capitulo-10-4" tabindex="-1">10.4 Sistema de Monitoramento e Reporte</li>
+            <li id="capitulo-10-5" tabindex="-1">10.5 Plataformas de visualização e reporte de dados do Município de São
+              Paulo</li>
+          </ol>
+          <nav class="page-navigation" aria-label="Navegação"><a href="#capitulo-9">← Capítulo 9</a><a
+              href="#equipe-tecnica">Próximo: Equipe técnica →</a></nav>
+        </section>
+        <section class="document-section document-view" id="equipe-tecnica" data-view="equipe-tecnica"
+          aria-labelledby="titulo-equipe-tecnica" tabindex="-1">
+          <span class="eyebrow">Páginas 228–229 do PDF</span>
+          <h2 id="titulo-equipe-tecnica">Equipe técnica</h2>
+
+          <div class="team-grid">
+            <section class="team-group">
+              <h3>Prefeito da Cidade de São Paulo</h3>
+              <p>Ricardo Nunes</p>
+            </section>
+
+            <section class="team-group">
+              <h3>Coordenação geral</h3>
+
+              <p>
+                <strong>José Renato Nalini</strong><br>
+                Secretário Executivo da Secretaria Executiva de Mudanças Climáticas
+              </p>
+
+              <p>
+                <strong>Luciana Feldman</strong><br>
+                Chefe de Gabinete da Secretaria Executiva de Mudanças Climáticas
+              </p>
+            </section>
+
+            <section class="team-group">
+              <h3>Equipe técnica de coordenação</h3>
+              <h4>SECLIMA</h4>
+
+              <p>
+                <strong>Alessandro Bender</strong><br>
+                Coordenador da Secretaria Executiva de Mudanças Climáticas
+              </p>
+
+              <ul>
+                <li>José Teles Mendes</li>
+                <li>Ludmila Mello de Amorim</li>
+                <li>Luiza Alegre Caballero</li>
+                <li>Mariana Teixeira Xavier</li>
+                <li>Murilo Martins Oliveira</li>
+              </ul>
+            </section>
+
+            <section class="team-group">
+              <h3>Equipe de apoio SECLIMA</h3>
+              <ul>
+                <li>Camila Cristina da Costa Moreira</li>
+                <li>Fabio Mariano Espíndola da Silva</li>
+              </ul>
+            </section>
+
+            <section class="team-group">
+              <h3>Equipe de comunicação SECLIMA</h3>
+              <ul>
+                <li>Maria Angélica Ferri Medeiros da Cunha</li>
+                <li>Gabriel Gonçalves Oliveira</li>
+              </ul>
+            </section>
+          </div>
+
+          <section class="document-subsection">
+            <h3>
+              Grupo de Trabalho Intersecretarial para a revisão 2025 do PlanClima SP
+            </h3>
+
+            <div class="team-grid">
+              <section class="team-group">
+                <h4>CET</h4>
+                <ul>
+                  <li>Marcelo Guidolim</li>
+                  <li>Silvio Shoiti Hagiwara</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SEGES</h4>
+                <ul>
+                  <li>Bayard do Couto e Silva Junior</li>
+                  <li>Mariana Correa Barra</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SEHAB</h4>
+                <ul>
+                  <li>Caetano Marques de Olinda Lima</li>
+                  <li>Marco Aurelio Lessa Villela</li>
+                  <li>Vania Cristiane Flores Salinas</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SEHAB/SEPM</h4>
+                <ul>
+                  <li>Daisy Pinato</li>
+                  <li>Maria Teresa Cardoso Fedeli</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SEPLAN</h4>
+                <ul>
+                  <li>Gustavo Guimarães de Campos Rabello</li>
+                  <li>Maria Beatriz de Oliveira Monteiro</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SGM/SEPE</h4>
+                <ul>
+                  <li>Amanda Theodoro de Souza</li>
+                  <li>Elizete Regina Nicolini</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SGM/SEDP</h4>
+                <ul>
+                  <li>Cintia Oliveira Szajnberg</li>
+                  <li>Rodrigo Ribeiro de Lima</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SIURB</h4>
+                <ul>
+                  <li>Douglas de Paula D’Amaro</li>
+                  <li>Rafael Alexandre do Nascimento Purificação</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMADS</h4>
+                <ul>
+                  <li>Cristiane Leonora da Conceição</li>
+                  <li>Refferson Lima Silva</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMDET</h4>
+                <ul>
+                  <li>Bruno Nascimento Araújo de Paula</li>
+                  <li>Guilherme Pereira Roncoletta</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMDHC</h4>
+                <ul>
+                  <li>Adriana Vasconcellos Vieira de Oliveira Luiz</li>
+                  <li>Regina Célia da Silveira Santana</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMDHC/SESANA</h4>
+                <ul>
+                  <li>Jordana da Silva Menon</li>
+                  <li>Mouzart Nogarol Filho</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SME</h4>
+                <ul>
+                  <li>Beatriz Sampaio Miguel</li>
+                  <li>Eduardo Murakami da Silva</li>
+                  <li>Talitha Mota Justino</li>
+                  <li>Guilherme Arbache</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMS</h4>
+                <ul>
+                  <li>Gianlucca Vergian Dalenogare</li>
+                  <li>Luiz Carlos Paranhos</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMSU</h4>
+                <ul>
+                  <li>Cleudson Barreiros Gonçalves</li>
+                  <li>Edson Bispo dos Santos</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMSUB</h4>
+                <ul>
+                  <li>Ernesto Massayoshi Sumi</li>
+                  <li>Gabriel Santos da Mota</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMSUB/SELIMP</h4>
+                <ul>
+                  <li>Barbara Dionisio Chagas</li>
+                  <li>Luciana Claro Artilheiro</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMT</h4>
+                <ul>
+                  <li>Felipe L. Vogel</li>
+                  <li>Fernando S. Miquelin</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMT/SETRAM</h4>
+                <ul>
+                  <li>Nicolas Xavier de Carvalho</li>
+                  <li>Rafael Mielnik</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SMUL</h4>
+                <ul>
+                  <li>Diego Xavier Leite</li>
+                  <li>Sarita Tobias de Andrade</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SP–REGULA</h4>
+                <ul>
+                  <li>David Tegangno</li>
+                  <li>Mauro Haddad Nieri</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SPTRANS</h4>
+                <ul>
+                  <li>Felipe Ramon de Carvalho</li>
+                  <li>Wilma Xavier dos Santos</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>SVMA</h4>
+                <ul>
+                  <li>Débora Cristina Santos Diogo</li>
+                  <li>Laura Lucia Vieira Ceneviva</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <section class="document-subsection">
+            <h3>
+              Grupo de Trabalho Participativo para a revisão 2025 do PlanClima SP
+            </h3>
+
+            <div class="team-grid">
+              <section class="team-group">
+                <h4>Anhembi Morumbi</h4>
+                <ul>
+                  <li>Andrea Gonçalves Carneiro</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Associação Nacional de Transportes Públicos – ANTP</h4>
+                <ul>
+                  <li>Olímpio Alvares</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Associação Paulista dos Gestores Ambientais – APGAM</h4>
+                <ul>
+                  <li>Caroline Kerestes</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>C40 Cities Climate Leadership Group</h4>
+                <ul>
+                  <li>Diego Blanc</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Centro Brasileiro de Análise e Planejamento – CEBRAP</h4>
+                <ul>
+                  <li>Alexandre Fontenelle</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Centro de Estudos em Sustentabilidade – FGVces</h4>
+                <ul>
+                  <li>Mariana Nicoletti</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Cidade a Pé</h4>
+                <ul>
+                  <li>Ana Carolina Nunes</li>
+                  <li>Cauê Janini</li>
+                  <li>Elio Jovart</li>
+                  <li>Juliana Trento</li>
+                  <li>Rosemeiry Leite</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Cidades Sustentáveis</h4>
+                <ul>
+                  <li>Naira Samezina</li>
+                  <li>Nina Orlow</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Coalizão pelo Clima, Crianças e Adolescentes – CLICA</h4>
+                <ul>
+                  <li>Júlia Gouveia</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Companhia Ambiental do Estado de São Paulo – CETESB</h4>
+                <ul>
+                  <li>Ana Carolina Medeiros de Camargo</li>
+                  <li>Daniel Soler Huet</li>
+                  <li>Omar de Almeida Cardoso</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Companhia de Gás de São Paulo – COMGÁS</h4>
+                <ul>
+                  <li>Dellaney Vidal Di Maio Neto</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Conselho Municipal de Meio Ambiente – CADES</h4>
+                <ul>
+                  <li>Liliane Neiva Arruda Lima</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>
+                  Cooperativa de Coleta Seletiva da Capela do Socorro – COOPERCAPS
+                </h4>
+                <ul>
+                  <li>Carol Carreiro</li>
+                  <li>Telines Basilio</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Departamento de Hidráulica e Saneamento – SHS/EESC/USP</h4>
+                <ul>
+                  <li>Eduardo Mario Mediondo</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Eletropaulo Metropolitana Eletricidade de São Paulo – ENEL</h4>
+                <ul>
+                  <li>Lincoln Sant Ana Morales</li>
+                  <li>Mateus Basilio Gomes</li>
+                  <li>Priscila Erosa Sebastiao</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Escola de Artes, Ciências e Humanidades – EACH/USP</h4>
+                <ul>
+                  <li>Alexandre Igari</li>
+                  <li>Marina Briant</li>
+                  <li>Paulo Almeida</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Escola de Engenharia de São Carlos – EESC/USP</h4>
+                <ul>
+                  <li>Eduardo Mario Mediondo</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Faculdade de Arquitetura, Urbanismo e Design – FAU/USP</h4>
+                <ul>
+                  <li>Denise Helena Silva Duarte</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Faculdade de Medicina – FM/USP</h4>
+                <ul>
+                  <li>Paulo Saldiva</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Faculdade de Saúde Pública – FSP/USP</h4>
+                <ul>
+                  <li>Gabriela Di Giulio</li>
+                  <li>Thiago Nogueira</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Faculdades Metropolitanas Unidas – FMU</h4>
+                <ul>
+                  <li>Elisangela Ronconi</li>
+                  <li>Patrícia de Lima Nishi</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Formigas de Embaúba</h4>
+                <ul>
+                  <li>Rafael Ribeiro Visconti</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>GT Carbono</h4>
+                <ul>
+                  <li>Lilian Sarrouf</li>
+                  <li>Ruy Monteiro</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto Árvores Vivas</h4>
+                <ul>
+                  <li>Juliana Gatti Pereira Rodrigues</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto Caminhabilidade</h4>
+                <ul>
+                  <li>Leticia Leda Sabino</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto de Energia e Ambiente – IEE/USP</h4>
+                <ul>
+                  <li>Célio Bermann</li>
+                  <li>Paulo Antonio de Almeida</li>
+                  <li>Pedro Roberto Jacobi</li>
+                  <li>Priscila Rosseto Camiloti</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto de Estudos Avançados – IEA/USP</h4>
+                <ul>
+                  <li>Carlos Nobre</li>
+                  <li>Felipe Chibas Ortiz</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto de Pesquisas Tecnológicas do Estado de São Paulo – IPT</h4>
+                <ul>
+                  <li>Filipe Antonio Marques Falcetta</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto Limpa Brasil</h4>
+                <ul>
+                  <li>Silvia Regina Linberger dos Anjos</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Instituto Pólis</h4>
+                <ul>
+                  <li>Nelson Saule Júnior</li>
+                  <li>Rodrigo Iacovini</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>
+                  International Council for Local Environmental Initiatives – ICLEI
+                </h4>
+                <ul>
+                  <li>Aline Cardoso</li>
+                  <li>Ana Wernke</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>International Council on Clean Transportation – ICCT</h4>
+                <ul>
+                  <li>André Gaspar Cieplinski</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Ordem dos Advogados do Brasil – OAB</h4>
+                <ul>
+                  <li>Adriana Martorelli</li>
+                  <li>Ana Brito</li>
+                  <li>Edvania Cristina Bolonhin</li>
+                  <li>Fernanda Tanure</li>
+                  <li>Luciana Lanna</li>
+                  <li>Mauro Przewonzinski</li>
+                  <li>Pedro Baracui</li>
+                  <li>Renan Rosolem Machado</li>
+                  <li>Stella Vivona</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Scipopulis</h4>
+                <ul>
+                  <li>Roberto Speicys</li>
+                  <li>Thayane Carvalho</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>
+                  Secretaria Estadual dos Transportes Metropolitanos de São Paulo – STM
+                </h4>
+                <ul>
+                  <li>Mariana Ohira Hashimoto</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Sindicato da Habitação de São Paulo – SECOVI</h4>
+                <ul>
+                  <li>Carlos Borges</li>
+                  <li>Patrícia Bittencourt</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Sociedade civil</h4>
+                <ul>
+                  <li>Flávio Soares</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Sociedade Vegetariana Brasileira</h4>
+                <ul>
+                  <li>Julia Lopes</li>
+                  <li>Luiz Eduardo Bittencourt Amorim</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Universidade Federal de São Paulo – UNIFESP</h4>
+                <ul>
+                  <li>Dan Levy</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Universidade Federal do ABC – UFABC</h4>
+                <ul>
+                  <li>Luciana Travassos</li>
+                </ul>
+              </section>
+
+              <section class="team-group">
+                <h4>Urban95 | CECIP – Centro de Criação de Imagem Popular</h4>
+                <ul>
+                  <li>Dayana Araújo</li>
+                  <li>Marieta Colucci Ribeiro</li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <nav class="page-navigation" aria-label="Navegação da Equipe técnica">
+            <a href="#capitulo-10">← Capítulo 10</a>
+            <a href="#referencias">Próximo: Referências →</a>
+          </nav>
+        </section>
+        <section class="document-section document-view" id="referencias" data-view="referencias"
+          aria-labelledby="titulo-referencias" tabindex="-1">
+          <span class="eyebrow">Páginas 230–231 do PDF</span>
+          <h2 id="titulo-referencias">Referências</h2>
+
+          <ol class="references-list">
+            <li>
+              C40 CITIES. Climate action planning. Disponível em:
+              <a href="https://www.c40.org/what-we-do/raising-climate-ambition/1-5c-climate-action-plans/">
+                https://www.c40.org/what-we-do/raising-climate-ambition/1-5c-climate-action-plans/
+              </a>
+              Acesso em: 30 dez. 2025.
+            </li>
+
+            <li>
+              C40 CITIES. Paris to Belém: A Decade of Local Climate Action. 2025.
+              Disponível em:
+              <a href="https://www.c40.org/wp-content/uploads/2025/06/Paris-to-Belem-A-Decade-of-Local-Climate.pdf">
+                https://www.c40.org/wp-content/uploads/2025/06/Paris-to-Belem-A-Decade-of-Local-Climate.pdf
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              ESTAÇÃO METEOROLÓGICA DO INSTITUTO DE ASTRONOMIA, GEOFÍSICA E CIÊNCIAS
+              ATMOSFÉRICAS – IAG/USP. Dados meteorológicos da cidade de São Paulo.
+              Disponível em:
+              <a href="https://www.estacao.iag.usp.br/">
+                https://www.estacao.iag.usp.br/
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              IBGE – INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Cidades: São
+              Paulo (SP). Panorama. Disponível em:
+              <a href="https://cidades.ibge.gov.br/brasil/sp/sao-paulo/panorama">
+                https://cidades.ibge.gov.br/brasil/sp/sao-paulo/panorama
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              IBGE – INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Produto Interno
+              Bruto dos Municípios – São Paulo. 2023. Disponível em:
+              <a href="https://cidades.ibge.gov.br/brasil/sp/sao-paulo/pesquisa/38/46996">
+                https://cidades.ibge.gov.br/brasil/sp/sao-paulo/pesquisa/38/46996
+              </a>.
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              IBGE – INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Síntese de
+              Indicadores Sociais. 2025. Disponível em:
+              <a href="https://www.ibge.gov.br/estatisticas/sociais/trabalho/9221-sintese-de-indicadores-sociais.html">
+                https://www.ibge.gov.br/estatisticas/sociais/trabalho/9221-sintese-de-indicadores-sociais.html
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              INMET. INSTITUTO NACIONAL DE METEOROLOGIA. São Paulo registra 8 horas
+              consecutivas de rajadas de vento acima de 70 km/h. Disponível em:
+              <a
+                href="https://portal.inmet.gov.br/noticias/s%C3%A3o-paulo-registra-8-horas-consecutivas-de-rajadas-de-vento-acima-de-70-km-h">
+                https://portal.inmet.gov.br/noticias/são-paulo-registra-8-horas-consecutivas-de-rajadas-de-vento-acima-de-70-km-h
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              IPCC. INTERGOVERNMENTAL PANEL ON CLIMATE CHANGE. Special Report on
+              Climate Change and Cities. Disponível em:
+              <a href="https://www.ipcc.ch/report/special-report-on-climate-change-and-cities/">
+                https://www.ipcc.ch/report/special-report-on-climate-change-and-cities/
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Climatologia e atmosfera – Dados. Disponível em:
+              <a
+                href="https://prefeitura.sp.gov.br/web/licenciamento/w/desenvolvimento_urbano/dados_estatisticos/info_cidade/meio_ambiente/climatologia_e_atmosfera/333885#5_01_02">
+                https://prefeitura.sp.gov.br/web/licenciamento/w/desenvolvimento_urbano/dados_estatisticos/info_cidade/meio_ambiente/climatologia_e_atmosfera/333885#5_01_02
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Gráficos Infocidade. Disponível em:
+              <a
+                href="https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/chamadas/grficos_infocidade_dados_2023_temperatura_1723127789.pdf">
+                https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/chamadas/grficos_infocidade_dados_2023_temperatura_1723127789.pdf
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Indicadores — SampaClima. Disponível em:
+              <a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/indicadores">
+                https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/indicadores
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Inventário de Emissões de Gases de Efeito Estufa
+              do Município de São Paulo. São Paulo, 2025. Disponível em:
+              <a href="https://prefeitura.sp.gov.br/web/meio_ambiente/w/comite_do_clima/284393">
+                https://prefeitura.sp.gov.br/web/meio_ambiente/w/comite_do_clima/284393
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Mapa da Cidade. Disponível em:
+              <a href="https://prefeitura.sp.gov.br/web/subprefeituras/subprefeituras/mapa">
+                https://prefeitura.sp.gov.br/web/subprefeituras/subprefeituras/mapa
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Mapeamento Digital da Cobertura Vegetal no
+              Município de São Paulo. Disponível em:
+              <a
+                href="https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/meio_ambiente/RelCobVeg2020_vFINAL_compressed(1).pdf">
+                https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/meio_ambiente/RelCobVeg2020_vFINAL_compressed(1).pdf
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). ObservaSampa. Disponível em:
+              <a href="https://observasampa.prefeitura.sp.gov.br/index.php">
+                https://observasampa.prefeitura.sp.gov.br/index.php
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
+              SÃO PAULO (MUNICÍPIO). Plano de Ação Climática do Município de São
+              Paulo 2020–2050 (PlanClima SP). São Paulo, 2021. Disponível em:
+              <a
+                href="https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/meio_ambiente/arquivos/PlanClimaSP_BaixaResolucao.pdf">
+                https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/meio_ambiente/arquivos/PlanClimaSP_BaixaResolucao.pdf
+              </a>
+              Acesso em: 29 dez. 2025.
+            </li>
+
+            <li>
       </div>
     </div>
   </main>
@@ -695,15 +2145,29 @@
   <footer class="clone-footer">
     <div class="container">
       <div class="clone-footer__grid">
-        <div class="clone-footer__brand"><img src="assets/images/logo-prefeitura.png" alt="Prefeitura de São Paulo" width="520" height="200"><p>Prefeitura de São Paulo.</p></div>
-        <div><h3>Documento de referência</h3><p>Plano de Ação Climática do Município de São Paulo (2020–2050) — Revisão 2025.</p></div>
-        <div><h3>Contato</h3><p><a href="mailto:seclima@prefeitura.sp.gov.br">seclima@prefeitura.sp.gov.br</a></p><p>(11) 3113-8000</p></div>
+        <div class="clone-footer__brand"><img src="assets/images/logo-prefeitura.png" alt="Prefeitura de São Paulo"
+            width="520" height="200">
+          <p>Prefeitura de São Paulo.</p>
+        </div>
+        <div>
+          <h3>Documento de referência</h3>
+          <p>Plano de Ação Climática do Município de São Paulo (2020–2050) — Revisão 2025.</p>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <p><a href="mailto:seclima@prefeitura.sp.gov.br">seclima@prefeitura.sp.gov.br</a></p>
+          <p>(11) 3113-8000</p>
+        </div>
       </div>
 
       <section class="clone-footer__prototype" aria-labelledby="titulo-prototipo">
         <h2 id="titulo-prototipo">Sobre este protótipo</h2>
-        <p>Este protótipo foi elaborado pela Secretaria Municipal da Pessoa com Deficiência (SMPED), por meio da Diretoria de Acessibilidade Digital e Comunicação Inclusiva, para demonstrar uma proposta de versão web acessível do PlanClima SP.</p>
-        <address><strong>Dúvidas sobre o protótipo:</strong> Danilo Silva de Souza, Diretor de Acessibilidade Digital e Comunicação Inclusiva — <a href="mailto:danilosouza@prefeitura.sp.gov.br">danilosouza@prefeitura.sp.gov.br</a></address>
+        <p>Este protótipo foi elaborado pela Secretaria Municipal da Pessoa com Deficiência (SMPED), por meio da
+          Diretoria de Acessibilidade Digital e Comunicação Inclusiva, para demonstrar uma proposta de versão web
+          acessível do PlanClima SP.</p>
+        <address><strong>Dúvidas sobre o protótipo:</strong> Danilo Silva de Souza, Diretor de Acessibilidade Digital e
+          Comunicação Inclusiva — <a href="mailto:danilosouza@prefeitura.sp.gov.br">danilosouza@prefeitura.sp.gov.br</a>
+        </address>
       </section>
 
       <p class="clone-footer__copyright">© 2026 Prefeitura de São Paulo. Todos os direitos reservados.</p>
@@ -749,8 +2213,8 @@
 
         if (moveFocus) {
           window.requestAnimationFrame(function () {
-            target.focus({preventScroll:true});
-            target.scrollIntoView({behavior:'smooth', block:'start'});
+            target.focus({ preventScroll: true });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
         }
       }
@@ -772,4 +2236,5 @@
     }());
   </script>
 </body>
+
 </html>
