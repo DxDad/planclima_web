@@ -9,7 +9,7 @@
   --pc-surface: #ffffff;
   --pc-surface-alt: #f6f6f6;
   --pc-yellow: #c18f0f;
-  --pc-orange: #c15e12;
+  --pc-orange: #b44c00;
   --pc-teal: #2c7366;
   --pc-red: #b61f34;
   --pc-focus: #005fcc;
@@ -399,10 +399,10 @@ body.planclima-site :focus-visible {
   padding: 1.6rem;
   background: #fff;
   border-top: 0.45rem solid var(--pc-orange);
-  border-radius: 0 0 var(--pc-radius) var(--pc-radius);
   border-right: 0.0625rem solid var(--pc-border);
   border-bottom: 0.0625rem solid var(--pc-border);
   border-left: 0.0625rem solid var(--pc-border);
+  border-radius: 0 0 var(--pc-radius) var(--pc-radius);
   box-shadow: none;
 }
 
@@ -421,8 +421,8 @@ body.planclima-site :focus-visible {
   margin-top: 1.5rem;
   padding: 1.5rem;
   background: #fff;
-  border-radius: var(--pc-radius);
   border: 0.0625rem solid var(--pc-border);
+  border-radius: var(--pc-radius);
   box-shadow: none;
 }
 
@@ -558,8 +558,8 @@ body.planclima-site :focus-visible {
 
 .news-card {
   padding: 1.5rem;
-  border-left: 0.35rem solid var(--pc-green-700);
   background: #fff;
+  border-left: 0.35rem solid var(--pc-green-700);
   box-shadow: var(--pc-shadow);
 }
 
@@ -671,8 +671,7 @@ body.planclima-site :focus-visible {
 }
 
 .in-page-nav {
-  position: sticky;
-  top: 1rem;
+  position: static;
   padding: 1.25rem;
   background: #fff;
   border: 0.0625rem solid var(--pc-border);
@@ -686,9 +685,22 @@ body.planclima-site :focus-visible {
   font-size: 1.15rem;
 }
 
-.in-page-nav ol {
+/* Lista principal do menu: sem numeração automática */
+.official-web .web-layout .in-page-nav > ol {
+  max-height: none;
   margin: 0;
-  padding-left: 1.25rem;
+  padding-right: 0;
+  padding-left: 0;
+  overflow: visible;
+  list-style: none;
+}
+
+/* Subseções do menu */
+.official-web .web-layout .in-page-nav ol ol {
+  margin: 0.45rem 0 0.7rem 0.25rem;
+  padding-left: 1rem;
+  border-left: 1px solid #d9dfdc;
+  list-style: none;
 }
 
 .in-page-nav li + li {
@@ -727,6 +739,12 @@ body.planclima-site :focus-visible {
 
 .document-section + .document-section {
   padding-top: 3.5rem;
+}
+
+/* Impede que vistas dinâmicas recebam espaço no topo */
+.js .official-web .document-content > .document-view {
+  margin-top: 0;
+  padding-top: clamp(1.5rem, 4vw, 2.7rem);
 }
 
 .document-section h3 {
@@ -845,6 +863,12 @@ body.planclima-site :focus-visible {
   margin-top: 0.8rem;
 }
 
+/* Retira a numeração automática das listas que já têm números no texto */
+.official-web .document-content .placeholder-topics {
+  padding-left: 0;
+  list-style: none;
+}
+
 .data-region {
   overflow-x: auto;
   margin: 1rem 0 1.5rem;
@@ -895,20 +919,22 @@ body.planclima-site :focus-visible {
   box-shadow: none;
 }
 
-.meta-card__header {
+/* Laranja escurecido para assegurar contraste com o branco */
+.official-web .document-section .meta-card__header {
   padding: 1.4rem;
   color: #fff;
-  background: var(--pc-orange);
+  background: #b44c00;
 }
 
 .meta-card__header p {
   margin: 0 0 0.25rem;
+  color: #fff;
   font-size: 0.9rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-.meta-card__header h3 {
+.official-web .document-section .meta-card__header h3 {
   margin: 0;
   color: #fff;
   font-size: 1.55rem;
@@ -1134,22 +1160,5 @@ body.planclima-site :focus-visible {
   a[href]::after {
     content: " (" attr(href) ")";
     font-size: 0.8em;
-  }
-
-  .official-web .in-page-nav > ol {
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .official-web .in-page-nav ol ol {
-    margin-left: .25rem;
-    padding-left: 1rem;
-    border-left: 1px solid #d9dfdc;
-    list-style: none;
-  }
-
-  .official-web .placeholder-topics {
-    padding-left: 0;
-    list-style: none;
   }
 }
