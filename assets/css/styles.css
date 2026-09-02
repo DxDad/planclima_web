@@ -611,7 +611,7 @@ body.planclima-site :focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   list-style: none;
 }
