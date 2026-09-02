@@ -11,17 +11,6 @@ O projeto contém duas páginas:
 
 É possível abrir `index.html` diretamente no navegador. Não há dependências, processo de instalação ou etapa de compilação.
 
-## Publicar com GitHub Pages
-
-1. Crie um repositório vazio no GitHub.
-2. Envie todo o conteúdo desta pasta para a raiz do repositório.
-3. No repositório, acesse **Settings > Pages**.
-4. Em **Build and deployment**, selecione **Deploy from a branch**.
-5. Escolha a branch `main` e a pasta `/ (root)`.
-6. Salve e aguarde a disponibilização do endereço de demonstração.
-
-O arquivo `.nojekyll` evita processamento adicional do conteúdo pelo GitHub Pages.
-
 ## Organização dos arquivos
 
 ```text
