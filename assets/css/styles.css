@@ -685,7 +685,6 @@ body.planclima-site :focus-visible {
     font-size: 1.15rem;
 }
 
-/* Lista principal do menu: sem numeração automática */
 .official-web .web-layout .in-page-nav>ol {
     max-height: none;
     margin: 0;
@@ -695,7 +694,13 @@ body.planclima-site :focus-visible {
     list-style: none;
 }
 
-/* Subseções do menu */
+body.official-web .chapter-index--complete ol {
+    margin-left: 0.25rem;
+    padding-left: 1rem;
+    border-left: 1px solid #d9dfdc;
+    list-style: none;
+}
+
 .official-web .web-layout .in-page-nav ol ol {
     margin: 0.45rem 0 0.7rem 0.25rem;
     padding-left: 1rem;
