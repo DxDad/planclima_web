@@ -1,444 +1,1063 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Protótipo demonstrativo da página do PlanClima SP com acesso à versão web do Plano de Ação Climática.">
-  <title>PlanClima SP — protótipo</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <!-- Estilos exclusivos desta reprodução. A página PlanClima Web permanece inalterada. -->
-  <style>
-    .official-home {
-      --home-green:#004f27; --home-light-green:#176a4d; --home-lime:#94c11f;
-      --home-yellow:#b98500; --home-orange:#c75b15; --home-teal:#2d796c;
-      --home-red:#bd1e36; --home-rust:#b23a1d; --home-rust-dark:#942f18;
-      color:#111713; background:#fff;
+< !doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Protótipo demonstrativo da página do PlanClima SP com acesso à versão web do Plano de Ação Climática."><title>PlanClima SP — protótipo</title><link rel="stylesheet" href="assets/css/styles.css">< !-- Estilos exclusivos desta reprodução. A página PlanClima Web permanece inalterada. --><style>.official-home {
+    --home-green: #004f27;
+    --home-light-green: #176a4d;
+    --home-lime: #94c11f;
+    --home-yellow: #b98500;
+    --home-orange: #c75b15;
+    --home-teal: #2d796c;
+    --home-red: #bd1e36;
+    --home-rust: #b23a1d;
+    --home-rust-dark: #942f18;
+    color: #111713;
+    background: #fff;
+}
+
+.official-home .container {
+    width: min(calc(100% - 2rem), 75rem);
+}
+
+.portal-context {
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: #30313f;
+}
+
+.portal-context a {
+    display: inline-flex;
+    align-items: center;
+    gap: .75rem;
+    color: #fff !important;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.portal-context a::before {
+    content: "";
+    width: .75rem;
+    height: .9rem;
+    border: .1rem solid currentColor;
+    box-shadow: -.22rem -.18rem 0 -.08rem #30313f, -.22rem -.18rem 0 0 currentColor;
+}
+
+.clone-header {
+    box-shadow: 0 .2rem .75rem rgba(0, 0, 0, .08);
+}
+
+.clone-header .site-header__inner {
+    min-height: 5.65rem;
+}
+
+.clone-header .brand-link img {
+    width: 11rem;
+}
+
+.clone-header .desktop-nav {
+    gap: .75rem;
+}
+
+.clone-header .desktop-nav>a,
+.clone-header .platforms-menu>summary {
+    color: var(--home-green);
+    font-size: 1rem;
+}
+
+.clone-header .desktop-nav>a.nav-plan {
+    padding-inline: 1.35rem;
+    color: #fff;
+    background: var(--home-light-green);
+}
+
+.clone-header .platforms-menu>summary {
+    padding-inline: 1.55rem;
+    color: #fff;
+    background: var(--home-light-green);
+    border: 0;
+}
+
+.clone-hero {
+    padding: clamp(5.5rem, 10vw, 10rem) 0 5rem;
+    background: #f5f5f5;
+}
+
+.clone-hero h1 {
+    margin: 0;
+    color: var(--home-green);
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    line-height: .95;
+    letter-spacing: .01em;
+}
+
+.clone-hero__lead {
+    max-width: 73rem;
+    margin: 1.2rem 0 1.4rem;
+    color: #686d73;
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.clone-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(21rem, 1.27fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.clone-hero__photo {
+    min-height: 22.5rem;
+    margin: 0;
+    overflow: hidden;
+    border-radius: .75rem;
+}
+
+.clone-hero__photo img {
+    width: 100%;
+    height: 100% !important;
+    display: block;
+    object-fit: cover;
+}
+
+.clone-hero__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.clone-hero__action {
+    min-height: 10.7rem;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+    color: #fff !important;
+    border-radius: .7rem;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.03;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.clone-hero__action--report {
+    background: var(--home-yellow);
+}
+
+.clone-hero__action--plan {
+    background: var(--home-orange);
+}
+
+.clone-hero__action--dashboard {
+    background: var(--home-teal);
+}
+
+.clone-hero__action--seclima {
+    background: var(--home-red);
+}
+
+.clone-hero__action:hover,
+.clone-hero__action:focus-visible {
+    filter: brightness(.92);
+    text-decoration: underline;
+}
+
+.clone-section {
+    padding: clamp(4.5rem, 8vw, 7rem) 0;
+}
+
+.clone-section h2 {
+    margin: 0;
+    color: var(--home-green);
+    font-size: clamp(2.35rem, 4.3vw, 3.7rem);
+    line-height: 1.04;
+    letter-spacing: -.02em;
+}
+
+.clone-section__intro {
+    max-width: 72rem;
+    margin: 1rem auto 2.5rem;
+    font-size: 1.15rem;
+    line-height: 1.45;
+}
+
+.clone-about {
+    color: #fff;
+    background: var(--home-green);
+}
+
+.clone-about h2,
+.clone-about h3 {
+    color: #fff;
+}
+
+.clone-about__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.clone-about__card {
+    min-height: 20.5rem;
+    padding: 2rem;
+    border: .0625rem solid rgba(116, 204, 160, .55);
+    border-radius: 1rem;
+}
+
+.clone-about__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.clone-about__icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    background: var(--home-lime);
+    border-radius: 50%;
+}
+
+.clone-about__icon img {
+    width: 1.55rem;
+    max-height: 1.55rem;
+    filter: brightness(0) invert(1);
+}
+
+.clone-about__card h3 {
+    margin: 0;
+    color: var(--home-lime);
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.clone-about__card p,
+.clone-about__card li {
+    font-size: 1.07rem;
+    line-height: 1.45;
+}
+
+.clone-about__card strong {
+    color: var(--home-lime);
+}
+
+.clone-about__card ol {
+    margin: 0;
+    padding-left: 1.4rem;
+}
+
+.clone-about__card li+li {
+    margin-top: 1.8rem;
+}
+
+.clone-about__photos {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.clone-about__photos img {
+    width: 100%;
+    height: 25rem !important;
+    display: block;
+    object-fit: cover;
+    border-radius: .8rem;
+}
+
+.clone-emissions {
+    color: #fff;
+    background: var(--home-rust);
+}
+
+.clone-emissions h2,
+.clone-emissions h3 {
+    color: #fff;
+}
+
+.clone-emissions__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.clone-emissions__title {
+    font-size: clamp(2.6rem, 4.3vw, 3.6rem) !important;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.clone-years {
+    position: relative;
+    margin-top: 2.3rem;
+    padding-left: 2.75rem;
+}
+
+.clone-years::before {
+    content: "";
+    position: absolute;
+    top: .7rem;
+    bottom: 4.2rem;
+    left: .7rem;
+    width: .0625rem;
+    background: rgba(255, 255, 255, .65);
+}
+
+.clone-year {
+    position: relative;
+}
+
+.clone-year+.clone-year {
+    margin-top: 2.5rem;
+}
+
+.clone-year::before {
+    content: "";
+    position: absolute;
+    top: .7rem;
+    left: -2.55rem;
+    width: .9rem;
+    height: .9rem;
+    background: #f06b56;
+    border-radius: 50%;
+}
+
+.clone-year:last-child::before {
+    background: #ffe1a1;
+}
+
+.clone-year h3 {
+    margin: 0 0 .6rem;
+    font-size: 2.15rem;
+}
+
+.clone-year ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.clone-year p,
+.clone-year li {
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.clone-year li+li {
+    margin-top: .65rem;
+}
+
+.clone-emissions__panel {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: var(--home-rust-dark);
+    border-radius: 1.3rem;
+}
+
+.clone-emissions__panel h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+.clone-emissions__total {
+    margin: .2rem 0 0;
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.clone-emissions__unit {
+    margin: 0;
+    font-weight: 700;
+}
+
+.clone-bubbles {
+    min-height: 13rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.4rem 0;
+}
+
+.clone-bubble {
+    display: grid;
+    place-content: center;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.clone-bubble small {
+    display: block;
+    font-size: .62rem;
+}
+
+.clone-bubble strong {
+    display: block;
+    margin-top: .25rem;
+    font-size: 1.7rem;
+}
+
+.clone-bubble--energy {
+    width: 8.8rem;
+    height: 8.8rem;
+    background: #ef6d59;
+}
+
+.clone-bubble--transport {
+    width: 11.3rem;
+    height: 11.3rem;
+    background: #08a6b5;
+}
+
+.clone-bubble--waste {
+    width: 6.3rem;
+    height: 6.3rem;
+    background: #b65a12;
+}
+
+.clone-emissions__note {
+    max-width: 28rem;
+    margin: 0 auto;
+    font-size: .78rem;
+    font-style: italic;
+    line-height: 1.35;
+}
+
+.clone-emissions__link {
+    display: table;
+    margin: 4.5rem auto 0;
+    color: #fff !important;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.clone-emissions__link::after,
+.clone-news__link::after {
+    content: " →";
+    margin-left: .5rem;
+}
+
+.clone-strategies {
+    background: #fff;
+}
+
+.clone-strategies__heading {
+    max-width: 55rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.clone-strategies__heading h2 {
+    text-transform: uppercase;
+}
+
+.clone-strategies__heading p {
+    color: #666c72;
+    font-size: 1.15rem;
+}
+
+.clone-strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.clone-strategy {
+    position: relative;
+    min-height: 24rem;
+    overflow: hidden;
+    padding: 3rem 2.5rem 2.2rem;
+    color: #fff;
+    background: var(--strategy-color);
+    border-radius: 1.35rem;
+}
+
+.clone-strategy:first-child {
+    grid-column: span 2;
+}
+
+.clone-strategy__art {
+    position: absolute;
+    right: -3rem;
+    bottom: -4rem;
+    width: 48%;
+    opacity: .13;
+    pointer-events: none;
+}
+
+.clone-strategy__label {
+    position: relative;
+    z-index: 1;
+    display: table;
+    margin: 0 0 .8rem;
+    padding: .22rem .9rem;
+    color: #111;
+    background: #fff;
+    border-radius: 2rem;
+    font-size: .78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.clone-strategy h3 {
+    position: relative;
+    z-index: 1;
+    max-width: 34rem;
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    line-height: 1.05;
+}
+
+.clone-strategy p:not(.clone-strategy__label) {
+    position: relative;
+    z-index: 1;
+    max-width: 37rem;
+    margin: 2.8rem 0 0;
+    font-size: 1.08rem;
+    line-height: 1.25;
+}
+
+.clone-strategy a {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: #fff !important;
+    font-weight: 800;
+}
+
+.clone-strategy--small {
+    min-height: 25rem;
+    padding: 2.5rem;
+}
+
+.clone-strategy--small h3 {
+    font-size: clamp(1.85rem, 2.7vw, 2.5rem);
+}
+
+.clone-strategy--small p:not(.clone-strategy__label) {
+    margin-top: 1.5rem;
+}
+
+.clone-committee {
+    background: #fff;
+}
+
+.clone-committee__panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: clamp(2rem, 4vw, 3rem);
+    background: #fff;
+    border-radius: 1.4rem;
+    box-shadow: 0 .8rem 2.1rem rgba(0, 0, 0, .08);
+}
+
+.clone-committee h2 {
+    font-size: clamp(2.15rem, 3.5vw, 3.1rem);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.clone-committee__text {
+    color: #666c72;
+    font-size: 1.05rem;
+}
+
+.clone-committee__date {
+    margin: 2rem 0 1.7rem;
+    padding: 1rem 1.5rem;
+    background: #f5f5f5;
+    border-left: .22rem solid #d99a0e;
+    border-radius: .65rem;
+}
+
+.clone-committee__date span {
+    display: block;
+    color: #747980;
+    font-size: .78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.clone-committee__date strong {
+    display: block;
+    margin-top: .25rem;
+    font-size: 1.15rem;
+}
+
+.clone-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+.clone-button {
+    display: inline-flex;
+    min-height: 3.2rem;
+    align-items: center;
+    justify-content: center;
+    padding: .65rem 1.6rem;
+    color: #fff !important;
+    background: var(--home-green);
+    border: .12rem solid var(--home-green);
+    border-radius: 2rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.clone-button--outline {
+    color: var(--home-green) !important;
+    background: #fff;
+}
+
+.clone-committee__video h3 {
+    margin: 4.6rem 0 1rem;
+    color: #111;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.clone-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+    border-radius: 1rem;
+}
+
+.clone-news {
+    padding-top: 1.5rem;
+    background: #fff;
+}
+
+.clone-news__card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border-radius: 1.15rem;
+    box-shadow: 0 .55rem 1.35rem rgba(0, 0, 0, .1);
+}
+
+.clone-news__image {
+    min-height: 42rem;
+}
+
+.clone-news__image img {
+    width: 100%;
+    height: 100% !important;
+    display: block;
+    object-fit: cover;
+}
+
+.clone-news__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 3rem);
+    color: #fff;
+    background: var(--home-green);
+}
+
+.clone-news__content h2 {
+    color: #fff;
+    font-size: clamp(2.25rem, 3.8vw, 3.35rem);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.clone-news__content p {
+    font-size: 1.05rem;
+}
+
+.clone-news__link {
+    align-self: flex-start;
+    margin-top: 1.4rem;
+    padding: .75rem 1.75rem;
+    color: #111 !important;
+    background: #f0d48d;
+    border-radius: 2rem;
+    font-size: .85rem;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.clone-dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 2.8rem;
+}
+
+.clone-dots span {
+    width: .8rem;
+    height: .8rem;
+    background: #c8c9ca;
+    border-radius: 50%;
+}
+
+.clone-dots span:first-child {
+    background: #e4c577;
+}
+
+.clone-footer {
+    padding: 4rem 0 2rem;
+    color: #59606a;
+    background: #fff;
+}
+
+.clone-footer__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    gap: 4rem;
+}
+
+.clone-footer h2,
+.clone-footer h3 {
+    color: var(--home-green);
+}
+
+.clone-footer h3 {
+    margin: 0 0 1.4rem;
+    font-size: .95rem;
+    text-transform: uppercase;
+}
+
+.clone-footer__brand img {
+    width: 13rem;
+    margin-bottom: 1rem;
+}
+
+.clone-footer a {
+    color: #59606a !important;
+}
+
+.clone-footer__prototype {
+    margin-top: 3rem;
+    padding-top: 1.7rem;
+    border-top: .0625rem solid #d9dddf;
+}
+
+.clone-footer__prototype h2 {
+    margin: 0 0 .75rem;
+    font-size: 1.2rem;
+}
+
+.clone-footer__prototype p,
+.clone-footer__prototype address {
+    max-width: 67rem;
+    margin: 0 0 .75rem;
+    font-style: normal;
+    line-height: 1.55;
+}
+
+.clone-footer__copyright {
+    margin-top: 2.4rem;
+    padding-top: 1.7rem;
+    border-top: .0625rem solid #e1e4e5;
+    color: #a1a8b1;
+    text-align: center;
+    font-size: .8rem;
+}
+
+@media (max-width:68rem) {
+    .clone-header .mobile-nav>summary {
+        border-radius: 2rem;
     }
-    .official-home .container { width:min(calc(100% - 2rem),75rem); }
-    .portal-context { min-height:3.5rem; display:flex; align-items:center; color:#fff; background:#30313f; }
-    .portal-context a { display:inline-flex; align-items:center; gap:.75rem; color:#fff!important; font-weight:700; text-decoration:none; }
-    .portal-context a::before { content:""; width:.75rem; height:.9rem; border:.1rem solid currentColor; box-shadow:-.22rem -.18rem 0 -.08rem #30313f,-.22rem -.18rem 0 0 currentColor; }
-    .clone-header { box-shadow:0 .2rem .75rem rgba(0,0,0,.08); }
-    .clone-header .site-header__inner { min-height:5.65rem; }
-    .clone-header .brand-link img { width:11rem; }
-    .clone-header .desktop-nav { gap:.75rem; }
-    .clone-header .desktop-nav>a,.clone-header .platforms-menu>summary { color:var(--home-green); font-size:1rem; }
-    .clone-header .desktop-nav>a.nav-plan { padding-inline:1.35rem; color:#fff; background:var(--home-light-green); }
-    .clone-header .platforms-menu>summary { padding-inline:1.55rem; color:#fff; background:var(--home-light-green); border:0; }
 
-    .clone-hero { padding:clamp(5.5rem,10vw,10rem) 0 5rem; background:#f5f5f5; }
-    .clone-hero h1 { margin:0; color:var(--home-green); font-size:clamp(3rem,5vw,4.4rem); line-height:.95; letter-spacing:.01em; }
-    .clone-hero__lead { max-width:73rem; margin:1.2rem 0 1.4rem; color:#686d73; font-size:clamp(1.05rem,1.7vw,1.35rem); font-weight:700; line-height:1.15; }
-    .clone-hero__grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(21rem,1.27fr); gap:1.5rem; align-items:stretch; }
-    .clone-hero__photo { min-height:22.5rem; margin:0; overflow:hidden; border-radius:.75rem; }
-    .clone-hero__photo img { width:100%; height:100%!important; display:block; object-fit:cover; }
-    .clone-hero__actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
-    .clone-hero__action { min-height:10.7rem; display:flex; align-items:flex-end; padding:1.25rem; color:#fff!important; border-radius:.7rem; font-size:clamp(1.35rem,2.2vw,1.75rem); font-weight:800; line-height:1.03; text-decoration:none; text-transform:uppercase; }
-    .clone-hero__action--report { background:var(--home-yellow); }
-    .clone-hero__action--plan { background:var(--home-orange); }
-    .clone-hero__action--dashboard { background:var(--home-teal); }
-    .clone-hero__action--seclima { background:var(--home-red); }
-    .clone-hero__action:hover,.clone-hero__action:focus-visible { filter:brightness(.92); text-decoration:underline; }
-
-    .clone-section { padding:clamp(4.5rem,8vw,7rem) 0; }
-    .clone-section h2 { margin:0; color:var(--home-green); font-size:clamp(2.35rem,4.3vw,3.7rem); line-height:1.04; letter-spacing:-.02em; }
-    .clone-section__intro { max-width:72rem; margin:1rem auto 2.5rem; font-size:1.15rem; line-height:1.45; }
-    .clone-about { color:#fff; background:var(--home-green); }
-    .clone-about h2,.clone-about h3 { color:#fff; }
-    .clone-about__cards { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem; }
-    .clone-about__card { min-height:20.5rem; padding:2rem; border:.0625rem solid rgba(116,204,160,.55); border-radius:1rem; }
-    .clone-about__title { display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem; }
-    .clone-about__icon { width:3rem; height:3rem; display:grid; place-items:center; flex:0 0 auto; background:var(--home-lime); border-radius:50%; }
-    .clone-about__icon img { width:1.55rem; max-height:1.55rem; filter:brightness(0) invert(1); }
-    .clone-about__card h3 { margin:0; color:var(--home-lime); font-size:2rem; text-transform:uppercase; }
-    .clone-about__card p,.clone-about__card li { font-size:1.07rem; line-height:1.45; }
-    .clone-about__card strong { color:var(--home-lime); }
-    .clone-about__card ol { margin:0; padding-left:1.4rem; }
-    .clone-about__card li+li { margin-top:1.8rem; }
-    .clone-about__photos { display:grid; grid-template-columns:1.45fr 1fr; gap:1.5rem; margin-top:1.5rem; }
-    .clone-about__photos img { width:100%; height:25rem!important; display:block; object-fit:cover; border-radius:.8rem; }
-
-    .clone-emissions { color:#fff; background:var(--home-rust); }
-    .clone-emissions h2,.clone-emissions h3 { color:#fff; }
-    .clone-emissions__grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-    .clone-emissions__title { font-size:clamp(2.6rem,4.3vw,3.6rem)!important; font-weight:900; text-transform:uppercase; }
-    .clone-years { position:relative; margin-top:2.3rem; padding-left:2.75rem; }
-    .clone-years::before { content:""; position:absolute; top:.7rem; bottom:4.2rem; left:.7rem; width:.0625rem; background:rgba(255,255,255,.65); }
-    .clone-year { position:relative; }
-    .clone-year+.clone-year { margin-top:2.5rem; }
-    .clone-year::before { content:""; position:absolute; top:.7rem; left:-2.55rem; width:.9rem; height:.9rem; background:#f06b56; border-radius:50%; }
-    .clone-year:last-child::before { background:#ffe1a1; }
-    .clone-year h3 { margin:0 0 .6rem; font-size:2.15rem; }
-    .clone-year ul { margin:0; padding-left:1.25rem; }
-    .clone-year p,.clone-year li { font-size:1.05rem; line-height:1.35; }
-    .clone-year li+li { margin-top:.65rem; }
-    .clone-emissions__panel { padding:2.5rem 2rem; text-align:center; background:var(--home-rust-dark); border-radius:1.3rem; }
-    .clone-emissions__panel h3 { margin:0; font-size:1.15rem; }
-    .clone-emissions__total { margin:.2rem 0 0; font-size:clamp(3rem,5vw,4rem); font-weight:800; line-height:1.1; }
-    .clone-emissions__unit { margin:0; font-weight:700; }
-    .clone-bubbles { min-height:13rem; display:flex; align-items:center; justify-content:center; gap:1rem; margin:1.4rem 0; }
-    .clone-bubble { display:grid; place-content:center; color:#fff; border-radius:50%; font-weight:800; line-height:1.1; text-transform:uppercase; }
-    .clone-bubble small { display:block; font-size:.62rem; }
-    .clone-bubble strong { display:block; margin-top:.25rem; font-size:1.7rem; }
-    .clone-bubble--energy { width:8.8rem; height:8.8rem; background:#ef6d59; }
-    .clone-bubble--transport { width:11.3rem; height:11.3rem; background:#08a6b5; }
-    .clone-bubble--waste { width:6.3rem; height:6.3rem; background:#b65a12; }
-    .clone-emissions__note { max-width:28rem; margin:0 auto; font-size:.78rem; font-style:italic; line-height:1.35; }
-    .clone-emissions__link { display:table; margin:4.5rem auto 0; color:#fff!important; font-weight:800; text-decoration:none; }
-    .clone-emissions__link::after,.clone-news__link::after { content:" →"; margin-left:.5rem; }
-
-    .clone-strategies { background:#fff; }
-    .clone-strategies__heading { max-width:55rem; margin:0 auto 3rem; text-align:center; }
-    .clone-strategies__heading h2 { text-transform:uppercase; }
-    .clone-strategies__heading p { color:#666c72; font-size:1.15rem; }
-    .clone-strategy-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem; }
-    .clone-strategy { position:relative; min-height:24rem; overflow:hidden; padding:3rem 2.5rem 2.2rem; color:#fff; background:var(--strategy-color); border-radius:1.35rem; }
-    .clone-strategy:first-child { grid-column:span 2; }
-    .clone-strategy__art { position:absolute; right:-3rem; bottom:-4rem; width:48%; opacity:.13; pointer-events:none; }
-    .clone-strategy__label { position:relative; z-index:1; display:table; margin:0 0 .8rem; padding:.22rem .9rem; color:#111; background:#fff; border-radius:2rem; font-size:.78rem; font-weight:800; text-transform:uppercase; }
-    .clone-strategy h3 { position:relative; z-index:1; max-width:34rem; margin:0; color:#fff; font-size:clamp(2rem,3.2vw,2.75rem); line-height:1.05; }
-    .clone-strategy p:not(.clone-strategy__label) { position:relative; z-index:1; max-width:37rem; margin:2.8rem 0 0; font-size:1.08rem; line-height:1.25; }
-    .clone-strategy a { position:relative; z-index:1; display:inline-block; margin-top:1.25rem; color:#fff!important; font-weight:800; }
-    .clone-strategy--small { min-height:25rem; padding:2.5rem; }
-    .clone-strategy--small h3 { font-size:clamp(1.85rem,2.7vw,2.5rem); }
-    .clone-strategy--small p:not(.clone-strategy__label) { margin-top:1.5rem; }
-
-    .clone-committee { background:#fff; }
-    .clone-committee__panel { display:grid; grid-template-columns:1fr 1fr; gap:3rem; padding:clamp(2rem,4vw,3rem); background:#fff; border-radius:1.4rem; box-shadow:0 .8rem 2.1rem rgba(0,0,0,.08); }
-    .clone-committee h2 { font-size:clamp(2.15rem,3.5vw,3.1rem); font-weight:900; text-transform:uppercase; }
-    .clone-committee__text { color:#666c72; font-size:1.05rem; }
-    .clone-committee__date { margin:2rem 0 1.7rem; padding:1rem 1.5rem; background:#f5f5f5; border-left:.22rem solid #d99a0e; border-radius:.65rem; }
-    .clone-committee__date span { display:block; color:#747980; font-size:.78rem; font-weight:800; text-transform:uppercase; }
-    .clone-committee__date strong { display:block; margin-top:.25rem; font-size:1.15rem; }
-    .clone-buttons { display:flex; flex-wrap:wrap; gap:.8rem; }
-    .clone-button { display:inline-flex; min-height:3.2rem; align-items:center; justify-content:center; padding:.65rem 1.6rem; color:#fff!important; background:var(--home-green); border:.12rem solid var(--home-green); border-radius:2rem; font-weight:800; text-decoration:none; }
-    .clone-button--outline { color:var(--home-green)!important; background:#fff; }
-    .clone-committee__video h3 { margin:4.6rem 0 1rem; color:#111; font-size:1rem; text-transform:uppercase; }
-    .clone-video { width:100%; aspect-ratio:16/9; display:block; border:0; border-radius:1rem; }
-
-    .clone-news { padding-top:1.5rem; background:#fff; }
-    .clone-news__card { display:grid; grid-template-columns:1fr 1fr; overflow:hidden; border-radius:1.15rem; box-shadow:0 .55rem 1.35rem rgba(0,0,0,.1); }
-    .clone-news__image { min-height:42rem; }
-    .clone-news__image img { width:100%; height:100%!important; display:block; object-fit:cover; }
-    .clone-news__content { display:flex; flex-direction:column; justify-content:center; padding:clamp(2rem,4vw,3rem); color:#fff; background:var(--home-green); }
-    .clone-news__content h2 { color:#fff; font-size:clamp(2.25rem,3.8vw,3.35rem); font-weight:900; text-transform:uppercase; }
-    .clone-news__content p { font-size:1.05rem; }
-    .clone-news__link { align-self:flex-start; margin-top:1.4rem; padding:.75rem 1.75rem; color:#111!important; background:#f0d48d; border-radius:2rem; font-size:.85rem; font-weight:800; text-decoration:none; text-transform:uppercase; }
-    .clone-dots { display:flex; justify-content:center; gap:.5rem; margin-top:2.8rem; }
-    .clone-dots span { width:.8rem; height:.8rem; background:#c8c9ca; border-radius:50%; }
-    .clone-dots span:first-child { background:#e4c577; }
-
-    .clone-footer { padding:4rem 0 2rem; color:#59606a; background:#fff; }
-    .clone-footer__grid { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:4rem; }
-    .clone-footer h2,.clone-footer h3 { color:var(--home-green); }
-    .clone-footer h3 { margin:0 0 1.4rem; font-size:.95rem; text-transform:uppercase; }
-    .clone-footer__brand img { width:13rem; margin-bottom:1rem; }
-    .clone-footer a { color:#59606a!important; }
-    .clone-footer__prototype { margin-top:3rem; padding-top:1.7rem; border-top:.0625rem solid #d9dddf; }
-    .clone-footer__prototype h2 { margin:0 0 .75rem; font-size:1.2rem; }
-    .clone-footer__prototype p,.clone-footer__prototype address { max-width:67rem; margin:0 0 .75rem; font-style:normal; line-height:1.55; }
-    .clone-footer__copyright { margin-top:2.4rem; padding-top:1.7rem; border-top:.0625rem solid #e1e4e5; color:#a1a8b1; text-align:center; font-size:.8rem; }
-
-    @media (max-width:68rem) {
-      .clone-header .mobile-nav>summary { border-radius:2rem; }
-      .clone-strategy-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .clone-strategy:first-child { grid-column:span 2; }
-    }
-    @media (max-width:56rem) {
-      .clone-hero__grid,.clone-about__cards,.clone-emissions__grid,.clone-committee__panel,.clone-news__card { grid-template-columns:1fr; }
-      .clone-about__photos { grid-template-columns:1fr; }
-      .clone-about__photos img { height:20rem!important; }
-      .clone-committee__video h3 { margin-top:0; }
-      .clone-news__image { min-height:25rem; }
-      .clone-footer__grid { grid-template-columns:1fr 1fr; gap:2rem; }
-    }
-    @media (max-width:44rem) {
-        .portal-context {
-            min-height: 3rem;
-        }
-
-        .clone-hero {
-            padding-top: 4.5rem;
-        }
-
-        .clone-hero__actions,
-        .clone-strategy-grid,
-        .clone-footer__grid {
-            grid-template-columns: 1fr;
-        }
-
-        .clone-hero__photo {
-            min-height: 18rem;
-        }
-
-        .clone-hero__action {
-            min-height: 7.5rem;
-        }
-
-        .clone-about__card {
-            min-height: auto;
-            padding: 1.5rem;
-        }
-
-        .clone-bubbles {
-            gap: .35rem;
-            margin-inline: -2rem;
-            transform: scale(.86);
-        }
-
-        .clone-strategy:first-child {
-            grid-column: auto;
-        }
-
-        .clone-strategy,
-        .clone-strategy--small {
-            min-height: auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .clone-strategy p:not(.clone-strategy__label) {
-            margin-top: 1.3rem;
-        }
-
-        .clone-news__image {
-            min-height: 18rem;
-        }
+    .clone-strategy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    body.official-home .clone-hero__grid>*,
-    body.official-home .clone-emissions__grid>*,
-    body.official-home .clone-news__card>*,
-    body.official-home .clone-committee__panel>* {
+    .clone-strategy:first-child {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width:56rem) {
+
+    .clone-hero__grid,
+    .clone-about__cards,
+    .clone-emissions__grid,
+    .clone-committee__panel,
+    .clone-news__card {
+        grid-template-columns: 1fr;
+    }
+
+    .clone-about__photos {
+        grid-template-columns: 1fr;
+    }
+
+    .clone-about__photos img {
+        height: 20rem !important;
+    }
+
+    .clone-committee__video h3 {
+        margin-top: 0;
+    }
+
+    .clone-news__image {
+        min-height: 25rem;
+    }
+
+    .clone-footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width:44rem) {
+    .portal-context {
+        min-height: 3rem;
+    }
+
+    .clone-hero {
+        padding-top: 4.5rem;
+    }
+
+    .clone-hero__actions,
+    .clone-strategy-grid,
+    .clone-footer__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .clone-hero__photo {
+        min-height: 18rem;
+    }
+
+    .clone-hero__action {
+        min-height: 7.5rem;
+    }
+
+    .clone-about__card {
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .clone-bubbles {
+        gap: .35rem;
+        margin-inline: -2rem;
+        transform: scale(.86);
+    }
+
+    .clone-strategy:first-child {
+        grid-column: auto;
+    }
+
+    .clone-strategy,
+    .clone-strategy--small {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .clone-strategy p:not(.clone-strategy__label) {
+        margin-top: 1.3rem;
+    }
+
+    .clone-news__image {
+        min-height: 18rem;
+    }
+}
+
+body.official-home .clone-hero__grid>*,
+body.official-home .clone-emissions__grid>*,
+body.official-home .clone-news__card>*,
+body.official-home .clone-committee__panel>* {
+    min-width: 0;
+}
+
+body.official-home .clone-hero__action,
+body.official-home .clone-news__content h2,
+body.official-home .clone-news__content p,
+body.official-home .clone-year p,
+body.official-home .clone-year li {
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+body.official-home .clone-hero__action {
+    padding-inline: 1rem;
+    font-size: clamp(1.25rem, 1.9vw, 1.65rem);
+}
+
+body.official-home .clone-hero__action--plan {
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+}
+
+@media (max-width: 44rem) {
+
+    body.official-home main,
+    body.official-home section,
+    body.official-home .container,
+    body.official-home .clone-emissions__grid,
+    body.official-home .clone-news__card,
+    body.official-home .clone-news__content {
         min-width: 0;
+        max-width: 100%;
     }
 
-    body.official-home .clone-hero__action,
-    body.official-home .clone-news__content h2,
-    body.official-home .clone-news__content p,
+    body.official-home .clone-bubbles {
+        min-height: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.65rem;
+        margin: 1.5rem 0;
+        transform: none;
+    }
+
+    body.official-home .clone-bubble--energy {
+        width: 5.5rem;
+        height: 5.5rem;
+    }
+
+    body.official-home .clone-bubble--transport {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    body.official-home .clone-bubble--waste {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    body.official-home .clone-bubble small {
+        font-size: 0.5rem;
+    }
+
+    body.official-home .clone-bubble strong {
+        font-size: 1.25rem;
+    }
+
+    body.official-home .clone-emissions__title {
+        font-size: clamp(2rem, 10vw, 2.55rem) !important;
+        line-height: 1;
+    }
+
+    body.official-home .clone-years {
+        margin-top: 2rem;
+        padding-left: 2rem;
+    }
+
+    body.official-home .clone-years::before {
+        left: 0.45rem;
+    }
+
+    body.official-home .clone-year::before {
+        left: -1.95rem;
+    }
+
+    body.official-home .clone-year h3 {
+        font-size: 2rem;
+    }
+
     body.official-home .clone-year p,
     body.official-home .clone-year li {
-        overflow-wrap: break-word;
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    body.official-home .clone-emissions__panel {
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+
+    body.official-home .clone-emissions__panel h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    body.official-home .clone-emissions__total {
+        font-size: clamp(2.5rem, 13vw, 3.25rem);
+    }
+
+    body.official-home .clone-news__card {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    body.official-home .clone-news__image {
+        min-height: 14rem;
+    }
+
+    body.official-home .clone-news__content {
+        width: 100%;
+        padding: 1.75rem 1.25rem;
+    }
+
+    body.official-home .clone-news__content h2 {
+        max-width: 100%;
+        margin: 0;
+        font-size: clamp(1.65rem, 8vw, 2.1rem);
+        line-height: 1.08;
+        letter-spacing: -0.015em;
+    }
+
+    body.official-home .clone-news__content p {
+        max-width: 100%;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    body.official-home .clone-news__link {
+        max-width: 100%;
+        padding-inline: 1.25rem;
+        text-align: center;
+    }
+
+    body.official-home .clone-news__content h2 {
+        max-width: 100%;
+        font-size: clamp(2rem, 3vw, 2.75rem);
+        line-height: 1.08;
+        overflow-wrap: normal;
         word-break: normal;
-    }
-
-    body.official-home .clone-hero__action {
-        padding-inline: 1rem;
-        font-size: clamp(1.25rem, 1.9vw, 1.65rem);
-    }
-
-    body.official-home .clone-hero__action--plan {
-        font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+        hyphens: none;
     }
 
     @media (max-width: 44rem) {
-
-        body.official-home main,
-        body.official-home section,
-        body.official-home .container,
-        body.official-home .clone-emissions__grid,
-        body.official-home .clone-news__card,
-        body.official-home .clone-news__content {
-            min-width: 0;
-            max-width: 100%;
-        }
-
-        body.official-home .clone-bubbles {
-            min-height: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.65rem;
-            margin: 1.5rem 0;
-            transform: none;
-        }
-
-        body.official-home .clone-bubble--energy {
-            width: 5.5rem;
-            height: 5.5rem;
-        }
-
-        body.official-home .clone-bubble--transport {
-            width: 7rem;
-            height: 7rem;
-        }
-
-        body.official-home .clone-bubble--waste {
-            width: 4.5rem;
-            height: 4.5rem;
-        }
-
-        body.official-home .clone-bubble small {
-            font-size: 0.5rem;
-        }
-
-        body.official-home .clone-bubble strong {
-            font-size: 1.25rem;
-        }
-
-        body.official-home .clone-emissions__title {
-            font-size: clamp(2rem, 10vw, 2.55rem) !important;
-            line-height: 1;
-        }
-
-        body.official-home .clone-years {
-            margin-top: 2rem;
-            padding-left: 2rem;
-        }
-
-        body.official-home .clone-years::before {
-            left: 0.45rem;
-        }
-
-        body.official-home .clone-year::before {
-            left: -1.95rem;
-        }
-
-        body.official-home .clone-year h3 {
-            font-size: 2rem;
-        }
-
-        body.official-home .clone-year p,
-        body.official-home .clone-year li {
-            font-size: 1rem;
-            line-height: 1.45;
-        }
-
-        body.official-home .clone-emissions__panel {
-            width: 100%;
-            padding: 1.5rem 1rem;
-        }
-
-        body.official-home .clone-emissions__panel h3 {
-            font-size: 1rem;
-            line-height: 1.3;
-        }
-
-        body.official-home .clone-emissions__total {
-            font-size: clamp(2.5rem, 13vw, 3.25rem);
-        }
-
-        body.official-home .clone-news__card {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        body.official-home .clone-news__image {
-            min-height: 14rem;
-        }
-
-        body.official-home .clone-news__content {
-            width: 100%;
-            padding: 1.75rem 1.25rem;
-        }
-
         body.official-home .clone-news__content h2 {
-            max-width: 100%;
-            margin: 0;
-            font-size: clamp(1.65rem, 8vw, 2.1rem);
-            line-height: 1.08;
-            letter-spacing: -0.015em;
-        }
-
-        body.official-home .clone-news__content p {
-            max-width: 100%;
-            margin-top: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.55;
-        }
-
-        body.official-home .clone-news__link {
-            max-width: 100%;
-            padding-inline: 1.25rem;
-            text-align: center;
+            font-size: clamp(1.45rem, 7vw, 1.9rem);
+            line-height: 1.12;
+            overflow-wrap: normal;
+            word-break: normal;
+            hyphens: none;
         }
     }
-    </style>
-</head>
-<body class="planclima-site official-home">
-  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
-  <div class="prototype-banner" role="note">Protótipo demonstrativo. Este conteúdo não substitui o <a href="https://prefeitura.sp.gov.br/web/planclimasp">site oficial do PlanClima SP</a>.</div>
 
-  <header class="site-header clone-header">
-    <div class="container site-header__inner">
-      <a class="brand-link" href="index.html" aria-label="PlanClima SP — página inicial do protótipo"><img src="assets/images/logo-prefeitura.png" alt="Prefeitura de São Paulo" width="520" height="200"></a>
-      <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#sobre">O que é</a><a href="#metas">Metas</a><a href="#estrategias">Estratégias</a><a href="planclima-web.html">Plano na Web</a>
-        <details class="platforms-menu"><summary>Outras Plataformas</summary><div class="platforms-menu__panel"><a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/">SampaClima</a><a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento Climático</a><a href="https://www.cgesp.org/v3/">CGE</a><a href="https://observasampa.prefeitura.sp.gov.br/">ObservaSampa</a><a href="https://prefeitura.sp.gov.br/web/urbanismo/dados-abertos">Infocidade</a></div></details>
-      </nav>
-      <details class="mobile-nav"><summary>Menu</summary><nav class="mobile-nav__panel" aria-label="Navegação principal para telas menores"><a href="#sobre">O que é</a><a href="#metas">Metas</a><a href="#estrategias">Estratégias</a><a href="planclima-web.html">Plano na Web</a><a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/">SampaClima</a><a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento Climático</a></nav></details>
-    </div>
-  </header>
-
-  <main id="conteudo-principal">
-    <section class="clone-hero" aria-labelledby="titulo-pagina">
-      <div class="container">
-        <h1 id="titulo-pagina">PLANCLIMA SP</h1>
-        <p class="clone-hero__lead">Acompanhe as metas, ações, relatórios de monitoramento, publicações e a versão mais recente do Plano de Ação Climática de São Paulo.</p>
-        <div class="clone-hero__grid">
-          <figure class="clone-hero__photo"><img src="assets/images/onibus-eletricos.jpg" alt="Ônibus elétricos verdes da frota municipal de São Paulo" width="1080" height="720"></figure>
-          <nav class="clone-hero__actions" aria-label="Acessos em destaque">
-            <a class="clone-hero__action clone-hero__action--report" href="https://prefeitura.sp.gov.br/cidade/secretarias/upload/seclima/planclimasp/arquivos/5-relatorio-planclima-compilado-pdf.pdf">Relatório<br>anual</a>
-            <a class="clone-hero__action clone-hero__action--plan" href="https://prefeitura.sp.gov.br/cidade/secretarias/upload/seclima/planclimasp/arquivos/PlanClimaSP-2025__Completo__PARA-TELA.pdf">Plano<br>atualizado</a>
-            <a class="clone-hero__action clone-hero__action--dashboard" href="https://prefeitura.sp.gov.br/web/planclimasp/dashboard">Dashboard</a>
-            <a class="clone-hero__action clone-hero__action--seclima" href="https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas">Site<br>SECLIMA</a>
-          </nav>
-        </div>
-      </div>
-    </section>
-
-    <section class="clone-section clone-about" id="sobre" aria-labelledby="titulo-sobre">
-      <div class="container">
-        <h2 id="titulo-sobre">O que é o PlanClima SP?</h2>
-        <p class="clone-section__intro">É o principal instrumento de planejamento climático do Município de São Paulo e orienta as ações da cidade para o enfrentamento das mudanças climáticas de forma integrada, transversal e de curto, médio e longo prazo.</p>
-        <div class="clone-about__cards">
-          <article class="clone-about__card"><div class="clone-about__title"><span class="clone-about__icon" aria-hidden="true"><img src="assets/images/icone-visao.svg" alt="" width="26" height="18"></span><h3>Visão</h3></div><p>Uma cidade menos desigual e mais preparada para responder aos impactos da mudança do clima, <strong>neutra em carbono</strong> e que promova acesso a <strong>serviços públicos de qualidade</strong>, proporcionando bem-estar e desenvolvimento econômico, inclusivo e sustentável para todos.</p></article>
-          <article class="clone-about__card"><div class="clone-about__title"><span class="clone-about__icon" aria-hidden="true"><img src="assets/images/icone-objetivos.svg" alt="" width="33" height="33"></span><h3>Objetivos</h3></div><ol><li>Empreender a ação política necessária para a <strong>redução das emissões de gases de efeito estufa</strong> do Município de São Paulo.</li><li>Implementar as medidas necessárias para <strong>fortalecer a resiliência do Município</strong>, reduzindo vulnerabilidades sociais e ambientais.</li></ol></article>
-        </div>
-        <div class="clone-about__photos"><img src="assets/images/onibus-eletricos.jpg" alt="Ônibus elétricos verdes da frota municipal de São Paulo" width="1080" height="720"><img src="assets/images/avenida-planclima.jpg" alt="Avenida arborizada com carros seguindo em direção a um semáforo" width="1080" height="720"></div>
-      </div>
-    </section>
-
-    <section class="clone-section clone-emissions" id="metas" aria-labelledby="titulo-metas">
-      <div class="container">
-        <div class="clone-emissions__grid">
-          <div><h2 class="clone-emissions__title" id="titulo-metas">Metas de redução<br>de emissão</h2><div class="clone-years">
-            <article class="clone-year"><h3>2030</h3><ul><li>Reduzir em 20% as emissões de gases de efeito estufa em relação ao ano-base de 2017.</li><li>Reduzir em 50% suas emissões, com a atuação conjunta da Prefeitura e dos demais setores da cidade.</li></ul></article>
-            <article class="clone-year"><h3>2050</h3><p>Neutralidade completa — Carbono Zero — nas emissões líquidas de gases de efeito estufa para todo o território municipal.</p></article>
-          </div></div>
-          <div class="clone-emissions__panel" aria-labelledby="titulo-emissoes"><h3 id="titulo-emissoes">Emissão média da cidade (2010–2022)</h3><p class="clone-emissions__total">14 milhões</p><p class="clone-emissions__unit">ton de CO₂eq/ano</p>
-            <div class="clone-bubbles" aria-label="Distribuição das emissões: energia estacionária, 31%; transporte, 60%; resíduos, 9%"><div class="clone-bubble clone-bubble--energy" aria-hidden="true"><span><small>Energia<br>estacionária</small><strong>31%</strong></span></div><div class="clone-bubble clone-bubble--transport" aria-hidden="true"><span><small>Transporte</small><strong>60%</strong></span></div><div class="clone-bubble clone-bubble--waste" aria-hidden="true"><span><small>Resíduos</small><strong>9%</strong></span></div></div>
-            <p class="clone-emissions__note">CO₂e é uma “moeda comum” para medir as emissões que contribuem para o aquecimento global. Os diferentes gases são convertidos para o equivalente em dióxido de carbono, facilitando a compreensão e a comparação de seu impacto no clima.</p>
-          </div>
-        </div>
-        <a class="clone-emissions__link" href="https://prefeitura.sp.gov.br/web/planclimasp">Acesse os Inventários de Emissão</a>
-      </div>
-    </section>
-
-    <section class="clone-section clone-strategies" id="estrategias" aria-labelledby="titulo-estrategias">
-      <div class="container">
-        <header class="clone-strategies__heading"><h2 id="titulo-estrategias">Estratégias e seus objetivos</h2><p>Conheça as cinco estratégias fundamentais que guiam a transformação de São Paulo em uma metrópole resiliente.</p></header>
-        <div class="clone-strategy-grid">
-          <article class="clone-strategy" style="--strategy-color:#c99210"><img class="clone-strategy__art" src="assets/images/estrategia-carbono.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 01</p><h3>Rumo ao carbono zero</h3><p>Reduzir emissões até 2050, promovendo mobilidade sustentável, eficiência energética, energias renováveis, gestão de resíduos e inclusão social, com benefícios econômicos, ambientais e territoriais.</p><a href="planclima-web.html#amostra-meta">Ver exemplo na versão web</a></article>
-          <article class="clone-strategy" style="--strategy-color:#c95c1e"><img class="clone-strategy__art" src="assets/images/estrategia-adaptar.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 02</p><h3>Adaptar a cidade de hoje para o amanhã</h3><p>Fortalecer a capacidade de adaptação da cidade aos riscos climáticos, reduzindo vulnerabilidades sociais e da infraestrutura urbana.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article>
-          <article class="clone-strategy clone-strategy--small" style="--strategy-color:#ef775a"><img class="clone-strategy__art" src="assets/images/estrategia-proteger.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 03</p><h3>Proteger pessoas e bens</h3><p>Orientar a resposta da cidade durante eventos climáticos extremos por meio de prevenção, sistemas de alerta e protocolos de atuação.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article>
-          <article class="clone-strategy clone-strategy--small" style="--strategy-color:#337d70"><img class="clone-strategy__art" src="assets/images/estrategia-biomas.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 04</p><h3>Cuidar dos biomas, fortalecer a cidade</h3><p>Priorizar a conservação, a recuperação e a ampliação das áreas verdes e dos serviços ecossistêmicos.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article>
-          <article class="clone-strategy clone-strategy--small" style="--strategy-color:#c11e38"><img class="clone-strategy__art" src="assets/images/estrategia-trabalho.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 05</p><h3>Gerar trabalho e riqueza sustentáveis</h3><p>Fortalecer o desenvolvimento econômico da cidade por meio da geração de trabalho e renda de forma equitativa e resiliente.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="clone-section clone-committee" aria-labelledby="titulo-comite"><div class="container"><div class="clone-committee__panel">
-      <div><h2 id="titulo-comite">Reunião do Comitê Municipal de Mudança do Clima e Ecoeconomia</h2><p class="clone-committee__text">O Comitê Municipal de Mudança do Clima e Ecoeconomia integra a agenda climática municipal, com base na Política Municipal de Mudança do Clima, e subsidia o acompanhamento e a gestão do PlanClima SP.</p><p class="clone-committee__date"><span>Próxima reunião:</span><strong>29 de julho de 2026</strong></p><div class="clone-buttons"><a class="clone-button" href="https://www.youtube.com/watch?v=6XEL93uqpKo">Participar da reunião</a><a class="clone-button clone-button--outline" href="https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas/participacao_social/conselhos_e_orgaos_colegiados/comite_municipal_de_mudanca_do_clima_e_ecoeconomia/">Atas e legislação</a></div></div>
-      <div class="clone-committee__video"><h3>Gravação do encontro anterior</h3><iframe class="clone-video" src="https://www.youtube.com/embed/-6YUCsu1iNA" title="Gravação da reunião anterior do Comitê Municipal de Mudança do Clima e Ecoeconomia" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-    </div></div></section>
-
-    <section class="clone-section clone-news" aria-labelledby="titulo-noticia"><div class="container"><article class="clone-news__card"><div class="clone-news__image"><img src="assets/images/onibus-eletricos.jpg" alt="Ônibus elétrico verde da frota municipal de São Paulo" width="1080" height="720"></div><div class="clone-news__content"><h2 id="titulo-noticia">O 5º Relatório de Acompanhamento das Ações do PlanClima SP foi apresentado em reunião do Comitê Municipal de Mudança do Clima e Ecoeconomia</h2><p>A Prefeitura de São Paulo apresentou, na 136ª Reunião Ordinária do Comitê Municipal de Mudança do Clima e Ecoeconomia, o 5º Relatório de Acompanhamento das Ações do Plano de Ação Climática do Município de São Paulo.</p><a class="clone-news__link" href="https://prefeitura.sp.gov.br/web/planclimasp/w/teste">Mais informações</a></div></article><span></span><span></span></div></div></section>
-  </main>
-
-  <footer class="clone-footer"><div class="container">
-    <div class="clone-footer__grid"><div class="clone-footer__brand"><img src="assets/images/logo-prefeitura.png" alt="Prefeitura de São Paulo" width="520" height="200"><p>Prefeitura de São Paulo.</p></div><div><h3>Endereço</h3><p>Viaduto do Chá, 15 — 8º andar</p><p>CEP <strong>01002-020</strong></p><p>Horário: 8h às 17h</p></div><div><h3>Contato</h3><p><a href="mailto:seclima@prefeitura.sp.gov.br">seclima@prefeitura.sp.gov.br</a></p><p>(11) 3113-8000 / (11) 3113-9524</p></div></div>
-    <section class="clone-footer__prototype" aria-labelledby="titulo-prototipo"><h2 id="titulo-prototipo">Sobre este protótipo</h2><p>Este protótipo foi elaborado pela Secretaria Municipal da Pessoa com Deficiência (SMPED), por meio da Diretoria de Acessibilidade Digital e Comunicação Inclusiva, para demonstrar uma proposta de versão web acessível do PlanClima SP.</p><address><strong>Dúvidas sobre o protótipo:</strong> Danilo Silva de Souza, Diretor de Acessibilidade Digital e Comunicação Inclusiva — <a href="mailto:danilosouza@prefeitura.sp.gov.br">danilosouza@prefeitura.sp.gov.br</a></address></section>
-    <p class="clone-footer__copyright">© 2026 Prefeitura de São Paulo. Todos os direitos reservados.</p>
-  </div></footer>
-</body>
-</html>
+    </style></head><body class="planclima-site official-home"><a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a><div class="prototype-banner" role="note">Protótipo demonstrativo. Este conteúdo não substitui o <a href="https://prefeitura.sp.gov.br/web/planclimasp">site oficial do PlanClima SP</a>.</div><header class="site-header clone-header"><div class="container site-header__inner"><a class="brand-link" href="index.html" aria-label="PlanClima SP — página inicial do protótipo"><img src="assets/images/logo-prefeitura.png" alt="Prefeitura de São Paulo" width="520" height="200"></a><nav class="desktop-nav" aria-label="Navegação principal"><a href="#sobre">O que é</a><a href="#metas">Metas</a><a href="#estrategias">Estratégias</a><a href="planclima-web.html">Plano na Web</a><details class="platforms-menu"><summary>Outras Plataformas</summary><div class="platforms-menu__panel"><a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/">SampaClima</a><a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento Climático</a><a href="https://www.cgesp.org/v3/">CGE</a><a href="https://observasampa.prefeitura.sp.gov.br/">ObservaSampa</a><a href="https://prefeitura.sp.gov.br/web/urbanismo/dados-abertos">Infocidade</a></div></details></nav><details class="mobile-nav"><summary>Menu</summary><nav class="mobile-nav__panel" aria-label="Navegação principal para telas menores"><a href="#sobre">O que é</a><a href="#metas">Metas</a><a href="#estrategias">Estratégias</a><a href="planclima-web.html">Plano na Web</a><a href="https://sampaclima.prefeitura.sp.gov.br/indicadoresinternet/">SampaClima</a><a href="https://prefeitura.sp.gov.br/web/planejamento/w/or%C3%A7amento-clim%C3%A1tico">Orçamento Climático</a></nav></details></div></header><main id="conteudo-principal"><section class="clone-hero" aria-labelledby="titulo-pagina"><div class="container"><h1 id="titulo-pagina">PLANCLIMA SP</h1><p class="clone-hero__lead">Acompanhe as metas,
+    ações,
+    relatórios de monitoramento,
+    publicações e a versão mais recente do Plano de Ação Climática de São Paulo.</p><div class="clone-hero__grid"><figure class="clone-hero__photo"><img src="assets/images/onibus-eletricos.jpg" alt="Ônibus elétricos verdes da frota municipal de São Paulo" width="1080" height="720"></figure><nav class="clone-hero__actions" aria-label="Acessos em destaque"><a class="clone-hero__action clone-hero__action--report" href="https://prefeitura.sp.gov.br/cidade/secretarias/upload/seclima/planclimasp/arquivos/5-relatorio-planclima-compilado-pdf.pdf">Relatório<br>anual</a><a class="clone-hero__action clone-hero__action--plan" href="https://prefeitura.sp.gov.br/cidade/secretarias/upload/seclima/planclimasp/arquivos/PlanClimaSP-2025__Completo__PARA-TELA.pdf">Plano<br>atualizado</a><a class="clone-hero__action clone-hero__action--dashboard" href="https://prefeitura.sp.gov.br/web/planclimasp/dashboard">Dashboard</a><a class="clone-hero__action clone-hero__action--seclima" href="https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas">Site<br>SECLIMA</a></nav></div></div></section><section class="clone-section clone-about" id="sobre" aria-labelledby="titulo-sobre"><div class="container"><h2 id="titulo-sobre">O que é o PlanClima SP?</h2><p class="clone-section__intro">É o principal instrumento de planejamento climático do Município de São Paulo e orienta as ações da cidade para o enfrentamento das mudanças climáticas de forma integrada,
+    transversal e de curto,
+    médio e longo prazo.</p><div class="clone-about__cards"><article class="clone-about__card"><div class="clone-about__title"><span class="clone-about__icon" aria-hidden="true"><img src="assets/images/icone-visao.svg" alt="" width="26" height="18"></span><h3>Visão</h3></div><p>Uma cidade menos desigual e mais preparada para responder aos impactos da mudança do clima,
+    <strong>neutra em carbono</strong>e que promova acesso a <strong>serviços públicos de qualidade</strong>,
+    proporcionando bem-estar e desenvolvimento econômico,
+    inclusivo e sustentável para todos.</p></article><article class="clone-about__card"><div class="clone-about__title"><span class="clone-about__icon" aria-hidden="true"><img src="assets/images/icone-objetivos.svg" alt="" width="33" height="33"></span><h3>Objetivos</h3></div><ol><li>Empreender a ação política necessária para a <strong>redução das emissões de gases de efeito estufa</strong>do Município de São Paulo.</li><li>Implementar as medidas necessárias para <strong>fortalecer a resiliência do Município</strong>,
+    reduzindo vulnerabilidades sociais e ambientais.</li></ol></article></div><div class="clone-about__photos"><img src="assets/images/onibus-eletricos.jpg" alt="Ônibus elétricos verdes da frota municipal de São Paulo" width="1080" height="720"><img src="assets/images/avenida-planclima.jpg" alt="Avenida arborizada com carros seguindo em direção a um semáforo" width="1080" height="720"></div></div></section><section class="clone-section clone-emissions" id="metas" aria-labelledby="titulo-metas"><div class="container"><div class="clone-emissions__grid"><div><h2 class="clone-emissions__title" id="titulo-metas">Metas de redução<br>de emissão</h2><div class="clone-years"><article class="clone-year"><h3>2030</h3><ul><li>Reduzir em 20% as emissões de gases de efeito estufa em relação ao ano-base de 2017.</li><li>Reduzir em 50% suas emissões,
+    com a atuação conjunta da Prefeitura e dos demais setores da cidade.</li></ul></article><article class="clone-year"><h3>2050</h3><p>Neutralidade completa — Carbono Zero — nas emissões líquidas de gases de efeito estufa para todo o território municipal.</p></article></div></div><div class="clone-emissions__panel" aria-labelledby="titulo-emissoes"><h3 id="titulo-emissoes">Emissão média da cidade (2010–2022)</h3><p class="clone-emissions__total">14 milhões</p><p class="clone-emissions__unit">ton de CO₂eq/ano</p><div class="clone-bubbles" aria-label="Distribuição das emissões: energia estacionária, 31%; transporte, 60%; resíduos, 9%"><div class="clone-bubble clone-bubble--energy" aria-hidden="true"><span><small>Energia<br>estacionária</small><strong>31%</strong></span></div><div class="clone-bubble clone-bubble--transport" aria-hidden="true"><span><small>Transporte</small><strong>60%</strong></span></div><div class="clone-bubble clone-bubble--waste" aria-hidden="true"><span><small>Resíduos</small><strong>9%</strong></span></div></div><p class="clone-emissions__note">CO₂e é uma “moeda comum” para medir as emissões que contribuem para o aquecimento global. Os diferentes gases são convertidos para o equivalente em dióxido de carbono,
+    facilitando a compreensão e a comparação de seu impacto no clima.</p></div></div><a class="clone-emissions__link" href="https://prefeitura.sp.gov.br/web/planclimasp">Acesse os Inventários de Emissão</a></div></section><section class="clone-section clone-strategies" id="estrategias" aria-labelledby="titulo-estrategias"><div class="container"><header class="clone-strategies__heading"><h2 id="titulo-estrategias">Estratégias e seus objetivos</h2><p>Conheça as cinco estratégias fundamentais que guiam a transformação de São Paulo em uma metrópole resiliente.</p></header><div class="clone-strategy-grid"><article class="clone-strategy" style="--strategy-color:#c99210"><img class="clone-strategy__art" src="assets/images/estrategia-carbono.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 01</p><h3>Rumo ao carbono zero</h3><p>Reduzir emissões até 2050,
+    promovendo mobilidade sustentável,
+    eficiência energética,
+    energias renováveis,
+    gestão de resíduos e inclusão social,
+    com benefícios econômicos,
+    ambientais e territoriais.</p><a href="planclima-web.html#amostra-meta">Ver exemplo na versão web</a></article><article class="clone-strategy" style="--strategy-color:#c95c1e"><img class="clone-strategy__art" src="assets/images/estrategia-adaptar.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 02</p><h3>Adaptar a cidade de hoje para o amanhã</h3><p>Fortalecer a capacidade de adaptação da cidade aos riscos climáticos,
+    reduzindo vulnerabilidades sociais e da infraestrutura urbana.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article><article class="clone-strategy clone-strategy--small" style="--strategy-color:#ef775a"><img class="clone-strategy__art" src="assets/images/estrategia-proteger.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 03</p><h3>Proteger pessoas e bens</h3><p>Orientar a resposta da cidade durante eventos climáticos extremos por meio de prevenção,
+    sistemas de alerta e protocolos de atuação.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article><article class="clone-strategy clone-strategy--small" style="--strategy-color:#337d70"><img class="clone-strategy__art" src="assets/images/estrategia-biomas.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 04</p><h3>Cuidar dos biomas,
+    fortalecer a cidade</h3><p>Priorizar a conservação,
+    a recuperação e a ampliação das áreas verdes e dos serviços ecossistêmicos.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article><article class="clone-strategy clone-strategy--small" style="--strategy-color:#c11e38"><img class="clone-strategy__art" src="assets/images/estrategia-trabalho.png" alt="" width="652" height="737"><p class="clone-strategy__label">Estratégia 05</p><h3>Gerar trabalho e riqueza sustentáveis</h3><p>Fortalecer o desenvolvimento econômico da cidade por meio da geração de trabalho e renda de forma equitativa e resiliente.</p><a href="planclima-web.html#sumario">Consultar o sumário</a></article></div></div></section><section class="clone-section clone-committee" aria-labelledby="titulo-comite"><div class="container"><div class="clone-committee__panel"><div><h2 id="titulo-comite">Reunião do Comitê Municipal de Mudança do Clima e Ecoeconomia</h2><p class="clone-committee__text">O Comitê Municipal de Mudança do Clima e Ecoeconomia integra a agenda climática municipal,
+    com base na Política Municipal de Mudança do Clima,
+    e subsidia o acompanhamento e a gestão do PlanClima SP.</p><p class="clone-committee__date"><span>Próxima reunião:</span><strong>29 de julho de 2026</strong></p><div class="clone-buttons"><a class="clone-button" href="https://www.youtube.com/watch?v=6XEL93uqpKo">Participar da reunião</a><a class="clone-button clone-button--outline" href="https://prefeitura.sp.gov.br/web/secretaria_executiva_de_mudancas_climaticas/participacao_social/conselhos_e_orgaos_colegiados/comite_municipal_de_mudanca_do_clima_e_ecoeconomia/">Atas e legislação</a></div></div><div class="clone-committee__video"><h3>Gravação do encontro anterior</h3><iframe class="clone-video" src="https://www.youtube.com/embed/-6YUCsu1iNA" title="Gravação da reunião anterior do Comitê Municipal de Mudança do Clima e Ecoeconomia" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div></div></section><section class="clone-section clone-news" aria-labelledby="titulo-noticia"><div class="container"><article class="clone-news__card"><div class="clone-news__image"><img src="assets/images/onibus-eletricos.jpg" alt="Ônibus elétrico verde da frota municipal de São Paulo" width="1080" height="720"></div><div class="clone-news__content"><h2 id="titulo-noticia">O 5º Relatório de Acompanhamento das Ações do PlanClima SP foi apresentado em reunião do Comitê Municipal de Mudança do Clima e Ecoeconomia</h2><p>A Prefeitura de São Paulo apresentou,
+    na 136ª Reunião Ordinária do Comitê Municipal de Mudança do Clima e Ecoeconomia,
+    o 5º Relatório de Acompanhamento das Ações do Plano de Ação Climática do Município de São Paulo.</p><a class="clone-news__link" href="https://prefeitura.sp.gov.br/web/planclimasp/w/teste">Mais informações</a></div></article><span></span><span></span></div></div></section></main><footer class="clone-footer"><div class="container"><div class="clone-footer__grid"><div class="clone-footer__brand"><img src="assets/images/logo-prefeitura.png" alt="Prefeitura de São Paulo" width="520" height="200"><p>Prefeitura de São Paulo.</p></div><div><h3>Endereço</h3><p>Viaduto do Chá,
+    15 — 8º andar</p><p>CEP <strong>01002-020</strong></p><p>Horário: 8h às 17h</p></div><div><h3>Contato</h3><p><a href="mailto:seclima@prefeitura.sp.gov.br">seclima@prefeitura.sp.gov.br</a></p><p>(11) 3113-8000 / (11) 3113-9524</p></div></div><section class="clone-footer__prototype" aria-labelledby="titulo-prototipo"><h2 id="titulo-prototipo">Sobre este protótipo</h2><p>Este protótipo foi elaborado pela Secretaria Municipal da Pessoa com Deficiência (SMPED), por meio da Diretoria de Acessibilidade Digital e Comunicação Inclusiva, para demonstrar uma proposta de versão web acessível do PlanClima SP.</p><address><strong>Dúvidas sobre o protótipo:</strong>Danilo Silva de Souza, Diretor de Acessibilidade Digital e Comunicação Inclusiva — <a href="mailto:danilosouza@prefeitura.sp.gov.br">danilosouza@prefeitura.sp.gov.br</a></address></section><p class="clone-footer__copyright">© 2026 Prefeitura de São Paulo. Todos os direitos reservados.</p></div></footer></body></html>
