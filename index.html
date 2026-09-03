@@ -153,19 +153,206 @@
       .clone-footer__grid { grid-template-columns:1fr 1fr; gap:2rem; }
     }
     @media (max-width:44rem) {
-      .portal-context { min-height:3rem; }
-      .clone-hero { padding-top:4.5rem; }
-      .clone-hero__actions,.clone-strategy-grid,.clone-footer__grid { grid-template-columns:1fr; }
-      .clone-hero__photo { min-height:18rem; }
-      .clone-hero__action { min-height:7.5rem; }
-      .clone-about__card { min-height:auto; padding:1.5rem; }
-      .clone-bubbles { gap:.35rem; margin-inline:-2rem; transform:scale(.86); }
-      .clone-strategy:first-child { grid-column:auto; }
-      .clone-strategy,.clone-strategy--small { min-height:auto; padding:2rem 1.5rem; }
-      .clone-strategy p:not(.clone-strategy__label) { margin-top:1.3rem; }
-      .clone-news__image { min-height:18rem; }
+        .portal-context {
+            min-height: 3rem;
+        }
+
+        .clone-hero {
+            padding-top: 4.5rem;
+        }
+
+        .clone-hero__actions,
+        .clone-strategy-grid,
+        .clone-footer__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .clone-hero__photo {
+            min-height: 18rem;
+        }
+
+        .clone-hero__action {
+            min-height: 7.5rem;
+        }
+
+        .clone-about__card {
+            min-height: auto;
+            padding: 1.5rem;
+        }
+
+        .clone-bubbles {
+            gap: .35rem;
+            margin-inline: -2rem;
+            transform: scale(.86);
+        }
+
+        .clone-strategy:first-child {
+            grid-column: auto;
+        }
+
+        .clone-strategy,
+        .clone-strategy--small {
+            min-height: auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .clone-strategy p:not(.clone-strategy__label) {
+            margin-top: 1.3rem;
+        }
+
+        .clone-news__image {
+            min-height: 18rem;
+        }
     }
-  </style>
+
+    body.official-home .clone-hero__grid>*,
+    body.official-home .clone-emissions__grid>*,
+    body.official-home .clone-news__card>*,
+    body.official-home .clone-committee__panel>* {
+        min-width: 0;
+    }
+
+    body.official-home .clone-hero__action,
+    body.official-home .clone-news__content h2,
+    body.official-home .clone-news__content p,
+    body.official-home .clone-year p,
+    body.official-home .clone-year li {
+        overflow-wrap: break-word;
+        word-break: normal;
+    }
+
+    body.official-home .clone-hero__action {
+        padding-inline: 1rem;
+        font-size: clamp(1.25rem, 1.9vw, 1.65rem);
+    }
+
+    body.official-home .clone-hero__action--plan {
+        font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    }
+
+    @media (max-width: 44rem) {
+
+        body.official-home main,
+        body.official-home section,
+        body.official-home .container,
+        body.official-home .clone-emissions__grid,
+        body.official-home .clone-news__card,
+        body.official-home .clone-news__content {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        body.official-home .clone-bubbles {
+            min-height: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+            margin: 1.5rem 0;
+            transform: none;
+        }
+
+        body.official-home .clone-bubble--energy {
+            width: 5.5rem;
+            height: 5.5rem;
+        }
+
+        body.official-home .clone-bubble--transport {
+            width: 7rem;
+            height: 7rem;
+        }
+
+        body.official-home .clone-bubble--waste {
+            width: 4.5rem;
+            height: 4.5rem;
+        }
+
+        body.official-home .clone-bubble small {
+            font-size: 0.5rem;
+        }
+
+        body.official-home .clone-bubble strong {
+            font-size: 1.25rem;
+        }
+
+        body.official-home .clone-emissions__title {
+            font-size: clamp(2rem, 10vw, 2.55rem) !important;
+            line-height: 1;
+        }
+
+        body.official-home .clone-years {
+            margin-top: 2rem;
+            padding-left: 2rem;
+        }
+
+        body.official-home .clone-years::before {
+            left: 0.45rem;
+        }
+
+        body.official-home .clone-year::before {
+            left: -1.95rem;
+        }
+
+        body.official-home .clone-year h3 {
+            font-size: 2rem;
+        }
+
+        body.official-home .clone-year p,
+        body.official-home .clone-year li {
+            font-size: 1rem;
+            line-height: 1.45;
+        }
+
+        body.official-home .clone-emissions__panel {
+            width: 100%;
+            padding: 1.5rem 1rem;
+        }
+
+        body.official-home .clone-emissions__panel h3 {
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        body.official-home .clone-emissions__total {
+            font-size: clamp(2.5rem, 13vw, 3.25rem);
+        }
+
+        body.official-home .clone-news__card {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        body.official-home .clone-news__image {
+            min-height: 14rem;
+        }
+
+        body.official-home .clone-news__content {
+            width: 100%;
+            padding: 1.75rem 1.25rem;
+        }
+
+        body.official-home .clone-news__content h2 {
+            max-width: 100%;
+            margin: 0;
+            font-size: clamp(1.65rem, 8vw, 2.1rem);
+            line-height: 1.08;
+            letter-spacing: -0.015em;
+        }
+
+        body.official-home .clone-news__content p {
+            max-width: 100%;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.55;
+        }
+
+        body.official-home .clone-news__link {
+            max-width: 100%;
+            padding-inline: 1.25rem;
+            text-align: center;
+        }
+    }
+    </style>
 </head>
 <body class="planclima-site official-home">
   <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
